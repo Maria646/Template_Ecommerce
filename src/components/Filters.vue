@@ -3,7 +3,7 @@
       <h2>Filtres</h2>
       <div>
         <label for="category">Catégories</label>
-        <div v-for="category in ['Cuisine', 'Coiffure', 'Jardinage', 'Menage']" :key="category">
+        <div v-for="category in categories" :key="category">
           <input 
             type="checkbox" 
             :value="category" 
@@ -16,7 +16,7 @@
   
       <div>
         <label for="city">Villes</label>
-        <div v-for="city in ['Longueuil', 'Lemoyne', 'St-hubert', 'Greenfield-Park', 'Brossard']" :key="city">
+        <div v-for="city in selectedCities" :key="city">
           <input 
             type="checkbox" 
             :value="city" 

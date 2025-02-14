@@ -4,7 +4,7 @@ export const useFiltersStore = defineStore('filters', {
   state: () => ({
     categories: ['Cuisine', 'Coiffure', 'Jardinage', 'Menage'],
     selectedCategories: [],
-    selectedCities: [],
+    selectedCities: ['Longueuil', 'Lemoyne', 'St-hubert', 'Greenfield-Park', 'Brossard'],
     selectedRadius: 10,
   }),
   actions: {
