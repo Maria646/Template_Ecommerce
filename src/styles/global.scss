@@ -1,0 +1,9 @@
+$border-colors: red, blue, green, orange, purple, pink, brown, teal, yellow, cyan;
+
+div {
+  @for $i from 1 through length($border-colors) {
+    &:nth-child(#{$i}) {
+      border: 2px solid nth($border-colors, $i);
+    }
+  }
+}
