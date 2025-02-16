@@ -11,19 +11,18 @@
     <div v-else>
       <!-- Filtrage et affichage des annonces -->
       <div v-for="annonce in filteredgetAnnonces" :key="annonce.annonce_id">
-        <p>{{ annonce.annonce_description }}</p>
-        <p>Type: {{ annonce.annonce_type }}</p>
-        <p>{{ annonce.photo_de_profil }}</p>
-        <p>{{ annonce.ville }}</p>
+                <!-- Icône pour ajouter aux favoris -->
+                <i @click="pushFavoris(annonce.nom, annonce.image)">Favoris</i>
+        <i @click="pushPanier(annonce.nom, annonce.image, annonce.prix)">Panier</i>
+
+        <p>{{ annonce.image }}</p>
+        <p>{{ annonce.nom }}</p>
 
         <!-- Lien vers la page des détails -->
         <NuxtLink :to="`/fiche_detailler/${annonce.annonce_id}`">
           Voir les détails
         </NuxtLink>
         
-        <!-- Icône pour ajouter aux favoris -->
-        <i @click="pushFavoris(annonce)">Favoris</i>
-        <i>Panier</i>
       </div>
     </div>
   </div>
@@ -38,6 +37,8 @@ import Filters from "../components/Filters.vue"
 import { useArticles } from '@/composables/donneesAPI';
 import { useFiltersStore } from '@/stores/filter';
 import { useFavoritesStore } from "@/stores/favoris";
+import { usePanierStore } from '@/stores/panier';
+
 
 // Variables pour stocker les annonces
 const annonces = ref([]);
@@ -46,6 +47,7 @@ const { getArticlesByCategorie, error } = useArticles();
 // Import du store pour les filtres
 const filtersStore = useFiltersStore();
 const favoritesStore = useFavoritesStore();
+const panierStore = usePanierStore();
 
 // Récupérer la route
 const route = useRoute();
@@ -82,6 +84,11 @@ const filteredgetAnnonces = computed(() => {
 // ✅ Correction : Ajouter une seule annonce aux favoris
 const pushFavoris = (annonce) => {
   favoritesStore.addFavorite(annonce);
+  panierStore.addPanier(annonce);
+};
+
+const pushPanier = (annonce) => {
+  panierStore.addPanier(annonce);
 };
 </script>
 

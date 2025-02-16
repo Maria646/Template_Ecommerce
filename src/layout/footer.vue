@@ -1,24 +1,24 @@
 <template>
-    <footer class="b-red-400 text-red-400">
-    <div class="container grid grid-cols-3">
+    <footer class="bg-secondary">
+    <div class="grid grid-cols-3 text-center p-10">
        <div class="logo col-span-1">
         logo
            <img src="" class="logoImage" alt="">
        </div>
-       <nav class="nav  col-span-1">
-           <ul class="navList">
+       <nav class="nav col-span-1">
+           <ul class="navList navList flex justify-center space-x-5">
                <li class="navItem">
-                   <router-link to="/" exact>Home</router-link>
+                   <router-link to="/" exact>Shop</router-link>
                </li>
                <li class="navItem">
                    <router-link to="/about">About</router-link>
                </li>
                <li class="navItem">
-                   <router-link to="/contact">Contact</router-link>
+                   <router-link to="/contact">Contact Us</router-link>
                </li>
            </ul>
        </nav>
-       <div class="iconDivers col-span-1">
+       <div class="iconDivers col-span-1 space-x-6">
            <RouterLink>
                <i class="iconPanier">Panier</i>
            </RouterLink>

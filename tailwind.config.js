@@ -5,7 +5,12 @@ export default {
     "./src/**/*.{vue,js,ts,jsx,tsx}"
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        primary: "#bfb9b7", // Gris clair
+        secondary: "#32312f", // Gris fonce
+      },
+    },
   },
   plugins: [],
 };
