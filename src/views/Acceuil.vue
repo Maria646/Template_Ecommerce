@@ -20,25 +20,25 @@
         <div class="bestSelers__cardOne">
             <i>Panier</i>
             <i>Favoris</i>
-            <img src="image1.jpg" alt="Product Image">
+            <img src="" alt="Product Image">
             <h3>Best Selers</h3>
         </div>
         <div class="bestSelers__cardOne">
             <i>Panier</i>
             <i>Favoris</i>
-            <img src="image1.jpg" alt="Product Image">
+            <img src="" alt="Product Image">
             <h3>Best Selers</h3>
         </div>
         <div class="bestSelers__cardOne">
             <i>Panier</i>
             <i>Favoris</i>
-            <img src="image1.jpg" alt="Product Image">
+            <img src="" alt="Product Image">
             <h3>Best Selers</h3>
         </div>
         <div class="bestSelers__cardOne">
             <i>Panier</i>
             <i>Favoris</i>
-            <img src="image1.jpg" alt="Product Image">
+            <img src="" alt="Product Image">
             <h3>Best Selers</h3>
         </div>
     </div>

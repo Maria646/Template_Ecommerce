@@ -1,9 +1,10 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
+import { RouterView } from 'vue-router';
+import Default from './layout/Default.vue'; // Correction ici
 </script>
 
 <template>
-    <RouterView />
+  <Default />
 </template>
 
 <style scoped>

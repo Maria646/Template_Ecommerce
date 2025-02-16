@@ -1,13 +1,14 @@
 <template>
-    <header/>
+    <Header/>
     <main>
         <RouterView />
     </main>
-    <footer/>
+    <Footer/>
 </template>
 
 <script setup>
-import header from "./header.vue"
-import footer from "./footer.vue"
+import Header from './Header.vue'; // Correction ici
+import Footer from './Footer.vue'; // Correction ici
 </script>
+
 

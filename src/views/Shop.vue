@@ -1,6 +1,10 @@
 <template>
-  <Filters/>
-  <div>
+  <main class="dashboard-container">
+        <aside class="filters">
+            <Filters />
+        </aside>
+        <section class="announcements">
+          <div>
     <h2>The </h2>
     <div v-if="loading">Chargement...</div>
     <div v-else-if="error">Une erreur est survenue</div>
@@ -23,19 +27,21 @@
       </div>
     </div>
   </div>
+        </section>
+    </main>
 </template>
 
 <script setup>
 import { ref, onMounted, computed } from 'vue';
 import { useRoute } from 'vue-router';
-import Filters from "../components/icons/Filters.vue"
-import { useAnnoncesServiceDomestique } from '@/composables/donneesAPI';
-import { useFiltersStore } from '@/stores/filters';
-import { useFavoritesStore } from "@/stores/useFavoritesStore";
+import Filters from "../components/Filters.vue"
+import { useArticles } from '@/composables/donneesAPI';
+import { useFiltersStore } from '@/stores/filter';
+import { useFavoritesStore } from "@/stores/favoris";
 
 // Variables pour stocker les annonces
 const annonces = ref([]);
-const { getAnnonces, loading, error } = useAnnoncesServiceDomestique();
+const { getArticlesByCategorie, error } = useArticles();
 
 // Import du store pour les filtres
 const filtersStore = useFiltersStore();
@@ -78,3 +84,26 @@ const pushFavoris = (annonce) => {
   favoritesStore.addFavorite(annonce);
 };
 </script>
+
+
+<style scoped>
+.dashboard-container {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+  }
+  
+  .filters {
+    width: 25%; /* Largeur de la colonne des filtres */
+    background: #f4f4f4;
+    padding: 1rem;
+    overflow-y: auto;
+  }
+  
+  .announcements {
+    flex: 1; /* La section des annonces prend tout l'espace restant */
+    padding: 1rem;
+    overflow-y: auto;
+  }
+  
+</style>
