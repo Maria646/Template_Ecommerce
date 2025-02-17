@@ -44,15 +44,16 @@
           </ul>
         </nav>
        <div class="iconDivers col-span-1 space-x-6">
-           <RouterLink>
-               <i class="iconPanier">Panier</i>
-           </RouterLink>
-           <RouterLink>
-               <i class="iconFavoris">Favoris</i>
-           </RouterLink>
-           <RouterLink>
-               <i class="iconConnexion">Connexion</i>
-           </RouterLink>
+        <router-link to="/panier">
+            <i class="iconPanier">Panier</i>
+        </router-link>
+
+<router-link to="/connexion">
+    <i class="iconFavoris">Favoris</i>
+</router-link>
+<router-link to="/connexion">
+    <i class="iconConnexion">Connexion</i>
+</router-link>
        </div>
      </div>
      </header>

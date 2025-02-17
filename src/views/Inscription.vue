@@ -1,40 +1,64 @@
 <template>
-    <div class="inscription">
-        <h2>Créer un compte</h2>
-        <form @submit.prevent="validerFormulaire">
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" v-model="form.email" class="form-control" required>
-                <span v-if="erreurs.email" class="error">{{ erreurs.email }}</span>
+    <section class="inscription h-screen flex items-center justify-center">
+        <div class="inscription__container w-[100%] max-w-3xl mx-auto min-h-[400px] p-6 rounded-lg bg-white shadow-md">
+            <h2 class="inscription__title text-xl font-semibold text-center mb-4">Inscription</h2>
+            <form class="inscription__form">
+                <div class="inscription__group mb-4">
+                    <label for="email" class="inscription__label block text-sm font-medium text-gray-700">Email</label>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        v-model="form.email" 
+                        required
+                        class="inscription__input mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                    >
+                    <span v-if="erreurs.email" class="inscription__error text-red-500 text-sm">{{ erreurs.email }}</span>
+                </div>
+                <div class="inscription__group mb-4">
+                    <label for="password" class="inscription__label block text-sm font-medium text-gray-700">Mot de passe</label>
+                    <input 
+                        type="password" 
+                        id="password" 
+                        v-model="form.password" 
+                        required
+                        class="inscription__input mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                    >
+                    <span 
+                        v-bind:class="{'text-red-500': erreurs.password, 'text-green-500': !erreurs.password && isPasswordValid}" 
+                        class="inscription__error text-sm"
+                    >
+                        {{ erreurs.password || (isPasswordValid ? 'Mot de passe valide' : '') }}
+                    </span>
+                </div>
+                <div class="inscription__group mb-4">
+                    <label for="passwordConfirm" class="inscription__label block text-sm font-medium text-gray-700">Confirmation mot de passe</label>
+                    <input 
+                        type="password" 
+                        id="passwordConfirm" 
+                        v-model="form.confirmPassword" 
+                        required
+                        class="inscription__input mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                    >
+                    <span v-if="erreurs.confirmPassword" class="inscription__error text-red-500 text-sm">{{ erreurs.confirmPassword }}</span>
+                </div>
+                <button 
+                   @click="validerFormulaire"
+                    type="submit"
+                    class="inscription__button w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition"
+                >
+                    S'inscrire
+                </button>
+            </form>
+            
+            <div class="inscription__links mt-4 flex justify-between text-sm text-blue-500">
+                <router-link to="/connexion" class="inscription__link hover:underline">Vous avez déjà un compte ? Connectez-vous</router-link>
             </div>
-
-            <div class="form-group">
-                <label for="password">Mot de passe</label>
-                <input type="password" id="password" v-model="form.password" class="form-control" required>
-                <span v-if="erreurs.password" class="error">{{ erreurs.password }}</span>
-            </div>
-
-            <div class="form-group">
-                <label for="confirmPassword">Confirmer le mot de passe</label>
-                <input type="password" id="confirmPassword" v-model="form.confirmPassword" class="form-control" required>
-                <span v-if="erreurs.confirmPassword" class="error">{{ erreurs.confirmPassword }}</span>
-            </div>
-
-            <button type="submit" class="btn btn-primary" :disabled="isLoading">
-                S'inscrire
-            </button>
-        </form>
-
-        <div class="links">
-            <router-link to="/connexion">Déjà un compte ? Se connecter</router-link>
-            <router-link to="/mot-de-passe-oublie">Mot de passe oublié ?</router-link>
         </div>
-    </div>
+    </section>
 </template>
 
 <script setup>
-import { reactive, ref } from 'vue';
-import axios from 'axios';
+import { reactive, computed } from 'vue';
 import { useRouter } from 'vue-router';
 
 const form = reactive({
@@ -51,9 +75,14 @@ const erreurs = reactive({
 
 const router = useRouter();
 
+// Validation du mot de passe
+const isPasswordValid = computed(() => {
+    return form.password.length >= 6;  // Exemple de critère: mot de passe doit avoir au moins 6 caractères
+});
+
 const validerFormulaire = async () => {
     erreurs.email = form.email.includes('@') ? '' : "Email invalide";
-    erreurs.password = form.password.length >= 6 ? '' : "Le mot de passe doit contenir au moins 6 caractères";
+    erreurs.password = isPasswordValid.value ? '' : "Le mot de passe doit contenir au moins 6 caractères";
     erreurs.confirmPassword = form.password === form.confirmPassword ? '' : "Les mots de passe ne correspondent pas";
 
     if (!erreurs.email && !erreurs.password && !erreurs.confirmPassword) {
@@ -68,37 +97,6 @@ const inscription = async () => {
 };
 </script>
 
+
 <style scoped>
-.inscription {
-    max-width: 400px;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    background: #fff;
-}
-
-.form-group {
-    margin-bottom: 15px;
-}
-
-.error {
-    color: red;
-    font-size: 0.9em;
-}
-
-.links {
-    margin-top: 10px;
-    display: flex;
-    justify-content: space-between;
-}
-
-.links a {
-    color: #007bff;
-    text-decoration: none;
-}
-
-.links a:hover {
-    text-decoration: underline;
-}
 </style>

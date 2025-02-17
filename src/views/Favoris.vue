@@ -13,7 +13,7 @@
 </template>  
 
 <script setup>
-import { useFavoritesStore } from "@/stores/useFavoritesStore";
+import { useFavoritesStore } from "@/stores/favoris.js";
 
 const favoritesStore = useFavoritesStore();
 </script>
