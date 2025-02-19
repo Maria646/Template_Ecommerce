@@ -7,7 +7,7 @@ import Connexion from '@/views/Connexion.vue'
 import Favoris from '@/views/Favoris.vue'
 import Inscription from '@/views/Inscription.vue'
 import Paiement from '@/views/Paiement.vue'
-
+import Panier from '@/views/Panier.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -51,6 +51,11 @@ const router = createRouter({
           path: '/paiement',
           name: 'paiement',
           component: Paiement
+        },
+        {
+          path: '/panier',
+          name: 'panier',
+          component: Panier
         },
       ]
     },

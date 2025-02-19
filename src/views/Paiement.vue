@@ -48,7 +48,7 @@
 <script setup>
 import { ref, reactive, computed, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
-import { useArticles } from '@/composables/donneesAPI';
+import { useProduits } from '@/composables/donneesAPI';
 import usePayment from '@/composables/paiementAPI.js';
 
 const router = useRoute();
@@ -58,7 +58,7 @@ const loading = ref(false);
 
 onMounted(async () => {
     const idParam = router.params.id;
-    const data = await useArticles(idParam); // Assurer l'attente de la réponse
+    const data = await useProduits(idParam); // Assurer l'attente de la réponse
     formState.nom = data.nom;
     formState.image = data.image;
     formState.prix = data.prix;

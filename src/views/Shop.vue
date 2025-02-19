@@ -34,7 +34,7 @@
 import { ref, onMounted, computed } from 'vue';
 import { useRoute } from 'vue-router';
 import Filters from "../components/Filters.vue"
-import { useArticles } from '@/composables/donneesAPI';
+import { useProduits } from '@/composables/donneesAPI';
 import { useFiltersStore } from '@/stores/filter';
 import { useFavoritesStore } from "@/stores/favoris";
 import { usePanierStore } from '@/stores/panier';
@@ -42,7 +42,7 @@ import { usePanierStore } from '@/stores/panier';
 
 // Variables pour stocker les annonces
 const annonces = ref([]);
-const { getArticlesByCategorie, error } = useArticles();
+const { getArticlesByCategorie, error } = useProduits();
 
 // Import du store pour les filtres
 const filtersStore = useFiltersStore();

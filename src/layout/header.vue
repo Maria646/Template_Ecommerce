@@ -48,7 +48,7 @@
             <i class="iconPanier">Panier</i>
         </router-link>
 
-<router-link to="/connexion">
+<router-link to="/favoris">
     <i class="iconFavoris">Favoris</i>
 </router-link>
 <router-link to="/connexion">

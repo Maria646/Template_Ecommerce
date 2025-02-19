@@ -19,7 +19,7 @@
       <div class="bestSelers__title">
         <h2>Best Selers</h2>
       </div>
-      <div class="bestSelers__cards grid grid-cols-4">
+      <div class="bestSelers__cards grid grid-cols-4 gap-4">
         <Card
           v-for="annonce in filteredArticles.slice(0, 4)"
           :key="annonce.annonce_id"
@@ -48,12 +48,12 @@
   <script setup>
   import { ref, onMounted } from 'vue';
   import Card from '@/components/Card.vue';
-  import { useArticles } from '@/composables/donneesAPI';
+  import { useProduits } from '@/composables/donneesAPI';
   import { useFavoritesStore } from '@/stores/favoris';
   import { usePanierStore } from '@/stores/panier';
   
-  // Utiliser useArticles pour récupérer les données d'articles
-  const { getArticlesByCategorie, error } = useArticles();
+  // Utiliser useProduits pour récupérer les données d'articles
+  const { getAllProduits, error } = useProduits();
   const filteredArticles = ref([]); // Variable qui contiendra les articles filtrés
   
   const favoritesStore = useFavoritesStore();
@@ -71,7 +71,7 @@
   
   // Appeler la fonction pour récupérer les articles à l'initialisation du composant
   onMounted(async () => {
-    const articles = await getArticlesByCategorie();
+    const articles = await getAllProduits();
     filteredArticles.value = articles || [];
     console.log(filteredArticles.value); 
   });
