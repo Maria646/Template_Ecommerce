@@ -8,6 +8,7 @@ export const useFavoritesStore = defineStore("favorites", () => {
     if (!favorites.value.some((item) => item.id === ad.id)) {
       favorites.value.push(ad);
     }
+    console.log("Liste des favoris:", favorites.value);
   };
 
   const removeFavorite = (adId) => {

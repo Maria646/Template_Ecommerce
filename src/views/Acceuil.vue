@@ -22,9 +22,12 @@
       <div class="bestSelers__cards grid grid-cols-4 gap-4">
         <Card
           v-for="annonce in filteredArticles.slice(0, 4)"
-          :key="annonce.annonce_id"
+          :key="annonce.id"
+          :id="annonce.id"
           :nom="annonce.nom"
           :image="annonce.image"
+          :description="annonce.description" 
+          :price="annonce.prix"       
           @ajouterFav="pushFavoris"
           @ajouterPan="pushPanier"
         />
@@ -61,11 +64,13 @@
   
   // Fonction pour ajouter à favoris
   const pushFavoris = (annonce) => {
+    console.log(annonce);
     favoritesStore.addFavorite(annonce);
   };
   
   // Fonction pour ajouter au panier
   const pushPanier = (annonce) => {
+    console.log(annonce);
     panierStore.addPanier(annonce);
   };
   

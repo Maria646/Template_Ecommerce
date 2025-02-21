@@ -4,7 +4,7 @@
           <h2 class="text-3xl font-semibold text-center text-gray-800 mb-6">Paiement</h2>
 
           <div class="mb-8 text-center">
-              <img :src="formState.image" alt="Image du produit" class="w-32 h-32 object-cover mx-auto mb-4 rounded-lg shadow-md">
+              <img :src="`src/${formState.image}`" alt="Image du produit" class="w-32 h-32 object-cover mx-auto mb-4 rounded-lg shadow-md">
               <h3 class="text-xl font-semibold text-gray-800">{{ formState.nom }}</h3>
               <p class="text-lg text-gray-500">{{ formState.prix }} $</p>
           </div>
@@ -20,11 +20,6 @@
                       v-model.number="ajoutArticle" 
                       class="w-16 p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
                   />
-              </div>
-
-              <!-- Affichage de la valeur de ajoutArticle -->
-              <div class="mb-4">
-                  <p>Quantité : {{ ajoutArticle }}</p>
               </div>
 
               <div class="flex justify-between items-center">
@@ -51,6 +46,8 @@ import { useRoute } from 'vue-router';
 import { useProduits } from '@/composables/donneesAPI';
 import usePayment from '@/composables/paiementAPI.js';
 
+const { getAllProduits, getAnnonceById, error } = useProduits();
+
 const router = useRoute();
 const ajoutArticle = ref(1);
 const formState = reactive({ nom: "", image: "", prix: 0 });
@@ -58,9 +55,12 @@ const loading = ref(false);
 
 onMounted(async () => {
     const idParam = router.params.id;
-    const data = await useProduits(idParam); // Assurer l'attente de la réponse
+    console.log(idParam);
+    const data = await getAnnonceById(idParam); 
+    console.log(data);
     formState.nom = data.nom;
     formState.image = data.image;
+    console.log(formState.image);
     formState.prix = data.prix;
 });
 
