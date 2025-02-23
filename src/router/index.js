@@ -59,7 +59,7 @@ const router = createRouter({
           component: Panier
         },
         {
-          path: '/ficheDetailProduit',
+          path: '/ficheDetailProduit/:id',
           name: 'ficheDetailProduit',
           component: FicheDetailProduit
         },

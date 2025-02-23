@@ -1,27 +1,34 @@
 <template>
-  <main class="dashboard-container">
-    <aside class="filters">
+  <main class="dashboard-container flex flex-col lg:flex-row overflow-hidden">
+    <aside class="filters w-full lg:w-1/4 bg-gray-100 p-4 overflow-y-auto">
       <Filters />
     </aside>
     
-    <section class="announcements">
+    <section class="announcements flex-1 p-4 overflow-y-auto">
       <div>
-        <h2>Liste des annonces</h2>
-        <div v-if="loading">Chargement...</div>
-        <div v-else-if="error">Une erreur est survenue : {{ error }}</div>
+        <h2 class="text-xl lg:text-2xl font-semibold mb-4">Liste des annonces</h2>
+        <div v-if="loading" class="text-center">Chargement...</div>
+        <div v-else-if="error" class="text-center text-red-500">Une erreur est survenue : {{ error }}</div>
         <div v-else>
-          <div v-for="annonce in filteredgetAnnonces" :key="annonce.id" class="cards grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            <Card
-              :id="annonce.id"
-              :nom="annonce.nom"
-              :image="annonce.image"
-              :description="annonce.description" 
-              :price="annonce.prix"       
-            >
-                <NuxtLink :to="`/fiche_detailler/${annonce.annonce_id}`" class="text-blue-500 hover:underline">
+          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <div v-for="annonce in filteredgetAnnonces" :key="annonce.id" 
+              class="relative group shadow-lg rounded-lg overflow-hidden transform transition-transform duration-300 hover:scale-105">
+              <Card
+                :id="annonce.id"
+                :nom="annonce.nom"
+                :image="annonce.image"
+                :description="annonce.description" 
+                :price="annonce.prix" 
+                @ajouterFav="pushFavoris"
+                @ajouterPan="pushPanier">
+              </Card>
+              <div class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-40 opacity-0 group-hover:opacity-85 transition-opacity duration-300">
+                <RouterLink :to="`/ficheDetailProduit/${annonce.id}`" 
+                  class="text-white text-lg font-semibold hover:underline">
                   Voir les détails
-                </NuxtLink>
-            </Card>
+                </RouterLink>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -32,6 +39,7 @@
 
 <script setup>
 import { ref, onMounted, computed } from 'vue';
+import { RouterLink } from 'vue-router';
 import { useRoute } from 'vue-router';
 import Card from '@/components/Card.vue';
 import Filters from "../components/Filters.vue";
@@ -45,13 +53,12 @@ const annonces = ref([]);
 const loading = ref(false);
 const error = ref(null);
 
-// Récupération des produits par catégorie
-const { getProduitByCategorie } = useProduits();
-
 // Stores
 const filtersStore = useFiltersStore();
 const favoritesStore = useFavoritesStore();
 const panierStore = usePanierStore();
+
+const { getProduitByCategorie } = useProduits();
 
 // Récupération de la catégorie depuis la route
 const route = useRoute();
@@ -63,6 +70,7 @@ const fetchAnnonces = async () => {
     loading.value = true;
     error.value = null;
     annonces.value = await getProduitByCategorie(selectedCategory.value);
+    console.log(annonces.value);
   } catch (err) {
     error.value = err.message;
   } finally {
@@ -76,15 +84,17 @@ onMounted(fetchAnnonces);
 // Filtrage dynamique des annonces
 const filteredgetAnnonces = computed(() => {
   return annonces.value.filter((annonce) => {
-    const matchesCategory =
-      !filtersStore.selectedOrigin.length ||
-      filtersStore.selectedOrigin.includes(annonce.annonce_type);
+    const matchesCategory = 
+      !filtersStore.selectedOrigin.length || 
+      filtersStore.selectedOrigin.includes(annonce.categorie);
 
-    const matchesCity =
+    const annoncePrix = parseFloat(annonce.prix);  // Assure-toi que c'est un décimal
+
+    const matchesPrice = 
       !filtersStore.selectedPrices.length ||
-      filtersStore.selectedPrices.includes(annonce.ville);
+      filtersStore.selectedPrices.includes(annoncePrix);
 
-    return matchesCategory && matchesCity;
+    return matchesCategory && matchesPrice;
   });
 });
 
@@ -99,25 +109,3 @@ const pushPanier = (annonce) => {
 };
 </script>
 
-
-<style scoped>
-.dashboard-container {
-    display: flex;
-    flex: 1;
-    overflow: hidden;
-  }
-  
-  .filters {
-    width: 25%; /* Largeur de la colonne des filtres */
-    background: #f4f4f4;
-    padding: 1rem;
-    overflow-y: auto;
-  }
-  
-  .announcements {
-    flex: 1; /* La section des annonces prend tout l'espace restant */
-    padding: 1rem;
-    overflow-y: auto;
-  }
-  
-</style>

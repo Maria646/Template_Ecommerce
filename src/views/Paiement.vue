@@ -4,12 +4,12 @@
             <h2 class="text-3xl font-semibold text-center text-gray-800 mb-6">Paiement</h2>
   
             <div class="mb-8 text-center">
-                <img :src="`src/${formState.image}`" alt="Image du produit" class="w-32 h-32 object-cover mx-auto mb-4 rounded-lg shadow-md">
+                <img :src="formState.image" alt="Image du produit" class="w-32 h-32 object-cover mx-auto mb-4 rounded-lg shadow-md">
                 <h3 class="text-xl font-semibold text-gray-800">{{ formState.nom }}</h3>
                 <p class="text-lg text-gray-500">{{ formState.prix }} $</p>
             </div>
   
-            <form class="space-y-4">
+            <form @submit.prevent="redirectToCheckout" class="space-y-4">
                 <div class="flex justify-between items-center">
                     <label for="quantity" class="text-sm font-medium text-gray-700">Quantité</label>
                     <input 
@@ -38,7 +38,7 @@
             </form>
         </div>
     </div>
-  </template>
+</template>
   
 
 <script setup>
@@ -46,23 +46,25 @@ import { ref, reactive, computed, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
 import { useProduits } from '@/composables/donneesAPI';
 import usePayment from '@/composables/paiementAPI.js';
+import { loadStripe } from '@stripe/stripe-js';
 
-const { getAllProduits, getProduitById, error } = useProduits();
+const { getProduitById } = useProduits();
+const { createCheckoutSession } = usePayment(); 
 
-const router = useRoute();
+const route = useRoute();
 const ajoutArticle = ref(1);
 const formState = reactive({ nom: "", image: "", prix: 0 });
 const loading = ref(false);
 
 onMounted(async () => {
-    const idParam = router.params.id;
+    const idParam = route.params.id;
     console.log(idParam);
     const data = await getProduitById(idParam); 
-    console.log(data);
-    formState.nom = data.nom;
-    formState.image = data.image;
-    console.log(formState.image);
-    formState.prix = data.prix;
+    if (data) {
+        formState.nom = data.nom;
+        formState.image = data.image;
+        formState.prix = data.prix;
+    }
 });
 
 const totalPrix = computed(() => {
@@ -70,28 +72,30 @@ const totalPrix = computed(() => {
 });
 
 // Fonction pour rediriger vers Stripe Checkout après avoir créé la session
-// const redirectToCheckout = async () => {
-//     const stripe = await loadStripe('pk_test_51QRfFlGAQyEVLjupnIIkEZeNmQoGL9kVN5GlxMY5qUh8u6CDIic4oSCW5r3qHe1IzMX76pWz04JvkAB0mqnqaN1j00hKg3bNCe'); // Remplacer par ta clé publique Stripe
-//     try {
-//       // Appel à la fonction du composable pour créer la session
-//       const sessionId = await createCheckoutSession(price.value, days.value);
-//       // Si une session a été créée, redirige vers Stripe
-//       if (sessionId) {
-//         const { error } = await stripe.redirectToCheckout({ sessionId });
-//         if (error) {
-//           console.error('Erreur lors de la redirection Stripe:', error);
-//         }
-//       } else {
-//         console.error('La création de la session a échoué');
-//       }
-//     } catch (err) {
-//       console.error('Erreur lors de la redirection vers Stripe Checkout:', err);
-//     }
-// };
+const redirectToCheckout = async () => {
+    loading.value = true;
+    const stripe = await loadStripe('pk_test_51QRfFlGAQyEVLjupnIIkEZeNmQoGL9kVN5GlxMY5qUh8u6CDIic4oSCW5r3qHe1IzMX76pWz04JvkAB0mqnqaN1j00hKg3bNCe'); // Remplace par ta clé publique Stripe
+
+    try {
+        // Création de la session Stripe avec le prix et la quantité
+        const sessionId = await createCheckoutSession(totalPrix.value);
+
+        if (sessionId) {
+            const { error } = await stripe.redirectToCheckout({ sessionId });
+            if (error) {
+                console.error('Erreur lors de la redirection Stripe:', error);
+            }
+        } else {
+            console.error('La création de la session a échoué');
+        }
+    } catch (err) {
+        console.error('Erreur lors de la redirection vers Stripe Checkout:', err);
+    } finally {
+        loading.value = false;
+    }
+};
 </script>
 
 
-
 <style scoped>
-/* Styles personnalisés pour améliorer la présentation */
 </style>

@@ -3,17 +3,15 @@ import { defineStore } from 'pinia';
 export const useFiltersStore = defineStore('filters', {
   state: () => ({
     origin: ['Indien', 'Chinois', 'Vietnamien', 'Africain'],
-    prices:[10, 20, 30, 40],
+    prices: [10.00, 20.00, 30.00, 40.00],
     selectedOrigin: [],
     selectedPrices: []
   }),
   actions: {
-    // Réinitialiser les filtres
     resetFilters() {
       this.selectedOrigin = [];
       this.selectedPrices = [];
     },
-    // Ajouter/retirer une catégorie
     updateCategory(category) {
       if (this.selectedOrigin.includes(category)) {
         this.selectedOrigin = this.selectedOrigin.filter(item => item !== category);
@@ -21,12 +19,13 @@ export const useFiltersStore = defineStore('filters', {
         this.selectedOrigin.push(category);
       }
     },
-    // Ajouter/retirer une ville
+
     updatePrix(prix) {
-      if (this.selectedPrices.includes(prix)) {
-        this.selectedPrices = this.selectedPrices.filter(item => item !== prix);
+      const prixDecimal = parseFloat(prix);
+      if (this.selectedPrices.includes(prixDecimal)) {
+        this.selectedPrices = this.selectedPrices.filter(item => item !== prixDecimal);
       } else {
-        this.selectedPrices.push(prix);
+        this.selectedPrices.push(prixDecimal);
       }
     }
   },

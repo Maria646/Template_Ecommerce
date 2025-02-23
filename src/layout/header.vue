@@ -10,15 +10,7 @@
         <nav class="navbar col-span-1 hidden md:block">
           <ul class="navList flex justify-center space-x-5">
             <li class="navItem relative group inline-flex items-center">
-              Shop
-              <svg class="ml-2 h-4 w-4 text-gray-500 group-hover:text-black transform group-hover:rotate-180 transition-transform duration-200" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-              </svg>
-              <ul class="absolute w-40 top-[25px] left-[-55px] hidden bg-white shadow-lg group-hover:block space-y-2">
-                <li class="hover:bg-primary"><router-link :to="{ path: '/shop', query: { category: 'Indian Thea' } }">Thea Indian</router-link></li>
-                <li class="hover:bg-primary"><router-link :to="{ path: '/shop', query: { category: 'Chinise Thea' } }">Thea Chinois</router-link></li>
-                <li class="hover:bg-primary"><router-link :to="{ path: '/shop', query: { category: 'Viet Thea' } }">Thea Vietnamien</router-link></li>
-              </ul>
+              <router-link :to="{ path: '/shop'}">Shop</router-link>
             </li>
             <li class="navItem"><router-link to="/about">About</router-link></li>
             <li class="navItem"><router-link to="/contact">Contact us</router-link></li>

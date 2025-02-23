@@ -1,8 +1,10 @@
 <template>
-  <div class="h-screen bg-cover bg-center bg-no-repeat bg-primary" 
-  style="background-image: url('https://cdn.pixabay.com/photo/2016/12/06/17/33/tee-1887042_640.jpg')">
-    <Header/>
-  <div class="bannerflex flex-col-reverse md:grid md:grid-cols-2 p-20">
+  <!-- <div class="h-screen bg-cover bg-center bg-no-repeat bg-primary" >
+    <Header/> -->
+  <div class="bannerflex flex-col-reverse md:grid md:grid-cols-2 p-20 
+  h-screen bg-cover bg-center bg-no-repeat bg-primary"
+  style="background-image: url('https://cdn.pixabay.com/photo/2016/12/06/17/33/tee-1887042_640.jpg')"
+  >
     <div class="banner__text text-center text-3xl font-bold col-start-2">
       FEEL MORE <br> THAN CAN...
     </div>
@@ -17,7 +19,7 @@
       </p>
     </div>
   </div>
-</div>
+<!-- </div> -->
 
   <section class="p-20">
     <div class="bestSelers max-w-[1000px] mx-auto text-center">
