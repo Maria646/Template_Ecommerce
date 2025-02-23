@@ -1,9 +1,8 @@
 <template>
-    <footer class="bg-secondary">
+    <footer class="bg-primary">
     <div class="grid grid-cols-3 text-center p-10">
        <div class="logo col-span-1">
-        logo
-           <img src="" class="logoImage" alt="">
+        <router-link to='/'>E-commerce</router-link>
        </div>
        <nav class="nav col-span-1">
            <ul class="navList navList flex justify-center space-x-5">
@@ -19,15 +18,16 @@
            </ul>
        </nav>
        <div class="iconDivers col-span-1 space-x-6">
-           <RouterLink>
-               <i class="iconPanier">Panier</i>
-           </RouterLink>
-           <RouterLink>
-               <i class="iconFavoris">Favoris</i>
-           </RouterLink>
-           <RouterLink>
-               <i class="iconConnexion">Connexion</i>
-           </RouterLink>
+        <router-link to="/panier">
+            <i class="iconPanier">Panier</i>
+        </router-link>
+
+<router-link to="/favoris">
+    <i class="iconFavoris">Favoris</i>
+</router-link>
+<router-link to="/connexion">
+    <i class="iconConnexion">Connexion</i>
+</router-link>
        </div>
      </div>
     </footer>

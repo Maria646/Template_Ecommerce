@@ -5,15 +5,13 @@ export const useFiltersStore = defineStore('filters', {
     origin: ['Indien', 'Chinois', 'Vietnamien', 'Africain'],
     prices:[10, 20, 30, 40],
     selectedOrigin: [],
-    selectedPrices: [],
-    selectedRadius: 10,
+    selectedPrices: []
   }),
   actions: {
     // Réinitialiser les filtres
     resetFilters() {
       this.selectedOrigin = [];
       this.selectedPrices = [];
-      this.selectedRadius = 10;
     },
     // Ajouter/retirer une catégorie
     updateCategory(category) {
@@ -24,16 +22,12 @@ export const useFiltersStore = defineStore('filters', {
       }
     },
     // Ajouter/retirer une ville
-    updateCity(city) {
-      if (this.selectedPrices.includes(city)) {
-        this.selectedPrices = this.selectedPrices.filter(item => item !== city);
+    updatePrix(prix) {
+      if (this.selectedPrices.includes(prix)) {
+        this.selectedPrices = this.selectedPrices.filter(item => item !== prix);
       } else {
-        this.selectedPrices.push(city);
+        this.selectedPrices.push(prix);
       }
-    },
-    // Mettre à jour le rayon
-    updateRadius(radius) {
-      this.selectedRadius = radius;
-    },
+    }
   },
 });

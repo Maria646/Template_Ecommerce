@@ -1,63 +1,68 @@
 <template>
   <main class="dashboard-container">
-        <aside class="filters">
-            <Filters />
-        </aside>
-        <section class="announcements">
-          <div>
-    <h2>The </h2>
-    <div v-if="loading">Chargement...</div>
-    <div v-else-if="error">Une erreur est survenue</div>
-    <div v-else>
-      <!-- Filtrage et affichage des annonces -->
-      <div v-for="annonce in filteredgetAnnonces" :key="annonce.annonce_id">
-                <!-- Icône pour ajouter aux favoris -->
-                <i @click="pushFavoris(annonce.nom, annonce.image)">Favoris</i>
-        <i @click="pushPanier(annonce.nom, annonce.image, annonce.prix)">Panier</i>
-
-        <p>{{ annonce.image }}</p>
-        <p>{{ annonce.nom }}</p>
-
-        <!-- Lien vers la page des détails -->
-        <NuxtLink :to="`/fiche_detailler/${annonce.annonce_id}`">
-          Voir les détails
-        </NuxtLink>
-        
+    <aside class="filters">
+      <Filters />
+    </aside>
+    
+    <section class="announcements">
+      <div>
+        <h2>Liste des annonces</h2>
+        <div v-if="loading">Chargement...</div>
+        <div v-else-if="error">Une erreur est survenue : {{ error }}</div>
+        <div v-else>
+          <div v-for="annonce in filteredgetAnnonces" :key="annonce.id" class="cards grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            <Card
+              :id="annonce.id"
+              :nom="annonce.nom"
+              :image="annonce.image"
+              :description="annonce.description" 
+              :price="annonce.prix"       
+            >
+                <NuxtLink :to="`/fiche_detailler/${annonce.annonce_id}`" class="text-blue-500 hover:underline">
+                  Voir les détails
+                </NuxtLink>
+            </Card>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-        </section>
-    </main>
+    </section>
+  </main>
 </template>
+
 
 <script setup>
 import { ref, onMounted, computed } from 'vue';
 import { useRoute } from 'vue-router';
-import Filters from "../components/Filters.vue"
+import Card from '@/components/Card.vue';
+import Filters from "../components/Filters.vue";
 import { useProduits } from '@/composables/donneesAPI';
 import { useFiltersStore } from '@/stores/filter';
 import { useFavoritesStore } from "@/stores/favoris";
 import { usePanierStore } from '@/stores/panier';
 
-
-// Variables pour stocker les annonces
+// Variables pour stocker les annonces et l'état de chargement
 const annonces = ref([]);
-const { getArticlesByCategorie, error } = useProduits();
+const loading = ref(false);
+const error = ref(null);
 
-// Import du store pour les filtres
+// Récupération des produits par catégorie
+const { getProduitByCategorie } = useProduits();
+
+// Stores
 const filtersStore = useFiltersStore();
 const favoritesStore = useFavoritesStore();
 const panierStore = usePanierStore();
 
-// Récupérer la route
+// Récupération de la catégorie depuis la route
 const route = useRoute();
-const selectedCategory = () => route.query.category;
+const selectedCategory = computed(() => route.query.category);
 
 // Fonction pour récupérer les annonces
 const fetchAnnonces = async () => {
   try {
     loading.value = true;
-    annonces.value = await getAnnonces(selectedCategory.value);
+    error.value = null;
+    annonces.value = await getProduitByCategorie(selectedCategory.value);
   } catch (err) {
     error.value = err.message;
   } finally {
@@ -65,28 +70,30 @@ const fetchAnnonces = async () => {
   }
 };
 
-// 🔥 Exécuter `fetchAnnonces` au montage
+// Exécuter `fetchAnnonces` au montage
 onMounted(fetchAnnonces);
 
 // Filtrage dynamique des annonces
 const filteredgetAnnonces = computed(() => {
   return annonces.value.filter((annonce) => {
     const matchesCategory =
-      filtersStore.selectedCategories.length === 0 ||
-      filtersStore.selectedCategories.includes(annonce.annonce_type);
+      !filtersStore.selectedOrigin.length ||
+      filtersStore.selectedOrigin.includes(annonce.annonce_type);
+
     const matchesCity =
-      filtersStore.selectedCities.length === 0 ||
-      filtersStore.selectedCities.includes(annonce.ville);
+      !filtersStore.selectedPrices.length ||
+      filtersStore.selectedPrices.includes(annonce.ville);
+
     return matchesCategory && matchesCity;
   });
 });
 
-// ✅ Correction : Ajouter une seule annonce aux favoris
+// Ajouter une annonce aux favoris
 const pushFavoris = (annonce) => {
   favoritesStore.addFavorite(annonce);
-  panierStore.addPanier(annonce);
 };
 
+// Ajouter une annonce au panier
 const pushPanier = (annonce) => {
   panierStore.addPanier(annonce);
 };

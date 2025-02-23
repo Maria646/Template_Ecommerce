@@ -2,7 +2,7 @@ import axios from 'axios';
 import { ref } from 'vue';
 
 // Définition de l'URL de base de l'API
-const apiUrl = 'http://localhost:12920';
+const apiUrl = 'http://localhost:1751';
 
 export function useProduits() {
   const error = ref(null);
@@ -19,7 +19,7 @@ export function useProduits() {
   }
 
   // Fonction pour récupérer les Articles par categorie
-  const getArticlesByCategorie = async (categorie) => {
+  const getProduitByCategorie = async (categorie) => {
     try {
       const response = await axios.get(`${apiUrl}/produits?categorie=${categorie}`);
       return response.data;
@@ -30,7 +30,7 @@ export function useProduits() {
   };
 
   // Fonction pour récupérer une annonce par son ID
-  const getAnnonceById = async (id) => {
+  const getProduitById = async (id) => {
     try {
       const response = await axios.get(`${apiUrl}/produits/${id}`);
       return response.data;
@@ -41,8 +41,8 @@ export function useProduits() {
   };
   return {
     getAllProduits,
-    getAnnonceById,
-    getArticlesByCategorie,
+    getProduitById,
+    getProduitByCategorie,
     error
   };
 }

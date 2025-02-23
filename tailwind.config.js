@@ -7,8 +7,10 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: "#bfb9b7", // Gris clair
-        secondary: "#32312f", // Gris fonce
+        primary: "#c5955d", // Gris clair
+        secondary: "#442207", // Gris fonce
+        accent: "#5c5506", // Gris fonce
+        clair:"#b7bdbb"
       },
     },
   },

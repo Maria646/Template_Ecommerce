@@ -2,7 +2,7 @@
     <div class="card 
       col-span-1 text-right
       bg-primary rounded-xl 
-      h-[400px] grid grid-cols-1">
+      h-[400px] grid grid-cols-1 p-5">
       
       <div class="icone space-y-5">
         <i @click="ajouterFav" class="block">Favoris</i>

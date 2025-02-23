@@ -16,15 +16,15 @@
     </div>
 
     <div>
-      <label for="city">Villes</label>
-      <div v-for="city in filtersStore.prices" :key="city"> <!-- Utilisation du store ici -->
+      <label for="prix">Prix</label>
+      <div v-for="prix in filtersStore.prices" :key="prix"> <!-- Utilisation du store ici -->
         <input 
           type="checkbox" 
-          :value="city" 
-          :checked="filtersStore.selectedPrices.includes(city)" 
-          @change="toggleCity(city)"
+          :value="prix" 
+          :checked="filtersStore.selectedPrices.includes(prix)" 
+          @change="toggleprix(prix)"
         />
-        {{ city }}
+        {{ prix }}
       </div>
     </div>
 
@@ -50,8 +50,8 @@ const toggleCategory = (category) => {
   filtersStore.updateCategory(category);
 };
 
-const toggleCity = (city) => {
-  filtersStore.updateCity(city);
+const toggleprix = (prix) => {
+  filtersStore.updateprix(prix);
 };
 
 const resetFilters = () => {
