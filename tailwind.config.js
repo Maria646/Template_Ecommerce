@@ -7,11 +7,12 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: "#c5955d", // Gris clair
-        secondary: "#442207", // Gris fonce
-        accent: "#5c5506", // Gris fonce
-        clair:"#b7bdbb"
+        primary: "#32312f", // Gris fonce
+        secondary: "#d9d1ce", // Gris clair
       },
+      fontFamily:{
+        'ela-demiserif': ['Ela Demiserif', 'sans-serif'],
+      }
     },
   },
   plugins: [],

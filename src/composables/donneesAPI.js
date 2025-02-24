@@ -2,7 +2,7 @@ import axios from 'axios';
 import { ref } from 'vue';
 
 // Définition de l'URL de base de l'API
-const apiUrl = 'http://localhost:1353';
+const apiUrl = 'http://localhost:1706';
 
 export function useProduits() {
   const error = ref(null);

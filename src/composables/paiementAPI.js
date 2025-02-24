@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export default function usePayment() {
-  const apiUrl = 'http://localhost:1353'; // Remplace par l'URL de ton backend
+  const apiUrl = 'http://localhost:1706'; // Remplace par l'URL de ton backend
 
   // Fonction pour créer la session Stripe
   const createCheckoutSession = async (prixTotal) => {
