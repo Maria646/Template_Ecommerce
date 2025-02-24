@@ -10,7 +10,7 @@
       </div>
       
       <img class="text-center mb-8" 
-        :src="`src/${props.image}`"
+        :src="`src/images/${props.image}`"
         :alt="props.nom"> 
       
       <h3>{{ props.nom }}</h3>

@@ -1,10 +1,6 @@
 <template>
-  <!-- <div class="h-screen bg-cover bg-center bg-no-repeat bg-primary" >
-    <Header/> -->
-  <div class="bannerflex flex-col-reverse md:grid md:grid-cols-2 p-20 
-  h-screen bg-cover bg-center bg-no-repeat bg-primary"
-  style="background-image: url('https://cdn.pixabay.com/photo/2016/12/06/17/33/tee-1887042_640.jpg')"
-  >
+  <div class="bannerflex flex-col-reverse md:grid md:grid-cols-2 p-20 h-screen w-full ">
+  <img src="../images/images/banner.png" alt="" class="w-full h-full object-cover">
     <div class="banner__text text-center text-3xl font-bold col-start-2">
       FEEL MORE <br> THAN CAN...
     </div>
@@ -96,5 +92,12 @@
   </script>
   
   <style scoped>
+  /* .bannerFlex{
+    background-image: url('../images/images/banner.png'); 
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    height: 300px;
+  } */
   </style>
   

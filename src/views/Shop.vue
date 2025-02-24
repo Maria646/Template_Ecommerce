@@ -58,18 +58,18 @@ const filtersStore = useFiltersStore();
 const favoritesStore = useFavoritesStore();
 const panierStore = usePanierStore();
 
-const { getProduitByCategorie } = useProduits();
+const { getProduitByCategorie, getAllProduits } = useProduits();
 
 // Récupération de la catégorie depuis la route
-const route = useRoute();
-const selectedCategory = computed(() => route.query.category);
+// const route = useRoute();
+// const selectedCategory = computed(() => route.query.category);
 
 // Fonction pour récupérer les annonces
 const fetchAnnonces = async () => {
   try {
     loading.value = true;
     error.value = null;
-    annonces.value = await getProduitByCategorie(selectedCategory.value);
+    annonces.value = await getAllProduits();
     console.log(annonces.value);
   } catch (err) {
     error.value = err.message;
