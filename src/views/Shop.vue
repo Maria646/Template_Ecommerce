@@ -12,15 +12,17 @@
         <div v-else>
           <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             <div v-for="annonce in filteredgetAnnonces" :key="annonce.id" 
-              class="relative group shadow-lg rounded-lg overflow-hidden transform transition-transform duration-300 hover:scale-105">
+              class="relative group shadow-lg rounded-lg overflow-hidden transform transition-transform duration-300 hover:scale-105 w-[230px]">
               <Card
                 :id="annonce.id"
                 :nom="annonce.nom"
                 :image="annonce.image"
                 :description="annonce.description" 
                 :price="annonce.prix" 
+                :cardBestSellers="false"
                 @ajouterFav="pushFavoris"
-                @ajouterPan="pushPanier">
+                @ajouterPan="pushPanier"
+                >
               </Card>
               <div class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-40 opacity-0 group-hover:opacity-85 transition-opacity duration-300">
                 <RouterLink :to="`/ficheDetailProduit/${annonce.id}`" 
@@ -59,10 +61,6 @@ const favoritesStore = useFavoritesStore();
 const panierStore = usePanierStore();
 
 const { getProduitByCategorie, getAllProduits } = useProduits();
-
-// Récupération de la catégorie depuis la route
-// const route = useRoute();
-// const selectedCategory = computed(() => route.query.category);
 
 // Fonction pour récupérer les annonces
 const fetchAnnonces = async () => {

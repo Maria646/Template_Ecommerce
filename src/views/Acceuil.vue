@@ -23,10 +23,10 @@
     </div>
   </div>
 
-  <section class="p-20 bg-cover bg-center bg-no-repeat relative" :style="{ backgroundImage: `url(${photo})` }">
+  <section class="bestSelers p-20 bg-cover bg-center bg-no-repeat relative" :style="{ backgroundImage: `url(${photo})` }">
     <div class="absolute inset-0 bg-secondary opacity-40"></div>
     <div class="bestSelers max-w-[1000px] mx-auto text-center relative z-10">
-      <div class="bestSelers__title mb-4">
+      <div class="bestSelers__title mb-20">
         <h2 class="text-2xl">Best Sellers</h2>
       </div>
       <div class="bestSelers__cards grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
@@ -37,14 +37,20 @@
           :nom="annonce.nom"
           :image="annonce.image"
           :description="annonce.description" 
-          :price="annonce.prix"       
+          :price="annonce.prix" 
+          :cardBestSellers="true"      
           @ajouterFav="pushFavoris"
           @ajouterPan="pushPanier"
-          class="transition-transform duration-300 ease-in-out transform hover:scale-105"
         />
       </div>
+
+      <!-- 🔹 Bouton qui redirige vers la page Shop -->
+      <router-link to="/shop" class="text-[20px] hover:text-2xl mt-10 inline-block bg-primary text-white px-14 py-5 rounded-lg transition-all duration-300 hover:bg-opacity-80">
+        Shop
+      </router-link>
     </div>
   </section>
+
 
   <div class="ceremony flex flex-col md:grid md:grid-cols-2">
     <div class="ceremony__image w-full">

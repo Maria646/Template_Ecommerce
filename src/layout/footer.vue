@@ -7,7 +7,7 @@
        <nav class="nav col-span-1">
            <ul class="navList navList flex justify-center space-x-5">
                <li class="navItem">
-                   <router-link to="/" exact>Shop</router-link>
+                   <router-link to="/shop" exact>Shop</router-link>
                </li>
                <li class="navItem">
                    <router-link to="/about">About</router-link>
