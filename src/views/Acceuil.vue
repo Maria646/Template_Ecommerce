@@ -54,7 +54,7 @@
 
   <div class="ceremony flex flex-col md:grid md:grid-cols-2">
     <div class="ceremony__image w-full">
-      <img src="/src/images/images/photo.png" alt="Ceremony" class="w-full object-cover"/>
+      <img src="/public/images/photo.png" alt="Ceremony" class="w-full object-cover"/>
     </div>
 
     <div class="ceremony__text bg-clair p-5 md:p-20 text-center md:text-left bg-cover bg-center bg-no-repeat relative" :style="{ backgroundImage: `url(${photo})` }">
@@ -76,8 +76,8 @@
   
   <script setup>
   import Header from '../layout/Header.vue'; 
-  import banner from "../images/images/banner1.png"; 
-  import photo from "../images/images/photo.png";
+  import banner from "/public/images/banner1.png"; 
+  // import photo from "/public/images/photo1.png";
   import { ref, onMounted } from 'vue';
   import Card from '@/components/Card.vue';
   import { useProduits } from '@/composables/donneesAPI';

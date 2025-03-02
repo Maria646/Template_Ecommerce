@@ -1,6 +1,7 @@
 <template>
+   <h2 class="text-xl font-semibold mb-4">Filtres</h2>
   <div class="p-4 bg-gray-100 rounded-lg shadow-md">
-    <h2 class="text-xl font-semibold mb-4">Filtres</h2>
+  
 
     <!-- Catégories Filter -->
     <div class="mb-6">
@@ -14,7 +15,7 @@
             'bg-gray-200 text-black': !filtersStore.selectedOrigin.includes(category)
           }"
           @click="filtersStore.updateCategory(category)"
-          class="w-full px-4 py-2 rounded-lg transition-colors duration-300 hover:bg-primary focus:outline-none focus:ring-2 focus:ring-blue-300"
+          class="w-full px-4 py-2 rounded-lg transition-colors duration-300 hover:bg-primary focus:outline-none focus:ring-2 focus:ring-green-300"
         >
           {{ category }}
         </button>
@@ -29,11 +30,11 @@
           v-for="prix in filtersStore.prices"
           :key="prix"
           :class="{
-            'bg-blue-500 text-white': filtersStore.selectedPrices.includes(prix),
+            'bg-primary text-white': filtersStore.selectedPrices.includes(prix),
             'bg-gray-200 text-black': !filtersStore.selectedPrices.includes(prix)
           }"
           @click="filtersStore.updatePrix(prix)"
-          class="w-full px-4 py-2 rounded-lg transition-colors duration-300 hover:bg-primary  focus:outline-none focus:ring-2 focus:ring-blue-300"
+          class="w-full px-4 py-2 rounded-lg transition-colors duration-300 hover:bg-primary  focus:outline-none focus:ring-2 focus:ring-green-300"
         >
           {{ prix }}
         </button>
@@ -44,7 +45,7 @@
     <div class="mt-6">
       <button 
         @click="resetFilters"
-        class="w-full bg-secondary text-white px-4 py-2 rounded-lg hover:bg-primary transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-red-300"
+        class="w-full bg-primary text-white px-4 py-2 rounded-lg hover:bg-secondary hover:text-primary hover:font-bold transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-green-300"
       >
         Réinitialiser les filtres
       </button>

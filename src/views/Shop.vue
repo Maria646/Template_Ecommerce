@@ -1,12 +1,12 @@
 <template>
-  <main class="dashboard-container flex flex-col lg:flex-row overflow-hidden">
-    <aside class="filters w-full lg:w-1/4 bg-gray-100 p-4 overflow-y-auto">
+  <div class="dashboard-container flex flex-col lg:flex-row overflow-hidden">
+    <aside class="filters w-full lg:w-1/4 rounded-lg shadow-md p-10 overflow-y-auto">
       <Filters />
     </aside>
     
-    <section class="announcements flex-1 p-4 overflow-y-auto">
+    <section class="announcements flex-1 p-8 overflow-y-auto">
       <div>
-        <h2 class="text-xl lg:text-2xl font-semibold mb-4">Liste des annonces</h2>
+        <h2 class="text-xl lg:text-2xl font-semibold mb-10">Toutes les catégories</h2>
         <div v-if="loading" class="text-center">Chargement...</div>
         <div v-else-if="error" class="text-center text-red-500">Une erreur est survenue : {{ error }}</div>
         <div v-else>
@@ -19,6 +19,7 @@
                 :image="annonce.image"
                 :description="annonce.description" 
                 :price="annonce.prix" 
+                :category="annonce.categorie"
                 :cardBestSellers="false"
                 @ajouterFav="pushFavoris"
                 @ajouterPan="pushPanier"
@@ -35,14 +36,13 @@
         </div>
       </div>
     </section>
-  </main>
+  </div>
 </template>
 
 
 <script setup>
 import { ref, onMounted, computed } from 'vue';
 import { RouterLink } from 'vue-router';
-import { useRoute } from 'vue-router';
 import Card from '@/components/Card.vue';
 import Filters from "../components/Filters.vue";
 import { useProduits } from '@/composables/donneesAPI';
