@@ -1,5 +1,6 @@
 <template>
   <div class="min-h-screen bg-white px-6 py-8">
+    <Header/>
     <h2 class="text-3xl font-bold text-primary mb-6 text-center">🛒 Mon Panier</h2>
 
     <!-- Affichage si le panier est vide -->
@@ -74,6 +75,7 @@ import { RouterLink } from 'vue-router';  // Correct pour RouterLink
 import { usePanierStore } from "@/stores/panier.js";
 import usePayment from '@/composables/paiementAPI.js';
 import { loadStripe } from '@stripe/stripe-js';
+import Header from '../layout/Header.vue';
 
 const { createCheckoutSession } = usePayment();
 

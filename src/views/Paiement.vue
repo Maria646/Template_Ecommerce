@@ -1,5 +1,6 @@
 <template>
     <div class="min-h-screen flex items-center justify-center bg-gray-100 p-6">
+        <Header/>
         <div class="bg-white rounded-lg shadow-lg p-8 max-w-lg w-full">
             <h2 class="text-3xl font-semibold text-center text-gray-800 mb-6">Paiement</h2>
   
@@ -47,6 +48,7 @@ import { useRoute } from 'vue-router';
 import { useProduits } from '@/composables/donneesAPI';
 import usePayment from '@/composables/paiementAPI.js';
 import { loadStripe } from '@stripe/stripe-js';
+import Header from '../layout/Header.vue';
 
 const { getProduitById } = useProduits();
 const { createCheckoutSession } = usePayment(); 

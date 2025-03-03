@@ -1,5 +1,6 @@
 <template>
   <div class="dashboard-container flex flex-col lg:flex-row overflow-hidden">
+    <Header/>
     <aside class="filters w-full lg:w-1/4 rounded-lg shadow-md p-10 overflow-y-auto">
       <Filters />
     </aside>
@@ -49,6 +50,7 @@ import { useProduits } from '@/composables/donneesAPI';
 import { useFiltersStore } from '@/stores/filter';
 import { useFavoritesStore } from "@/stores/favoris";
 import { usePanierStore } from '@/stores/panier';
+import Header from '../layout/Header.vue';
 
 // Variables pour stocker les annonces et l'état de chargement
 const annonces = ref([]);

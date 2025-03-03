@@ -27,23 +27,23 @@
 
     <div class="flex justify-center items-center h-[160px]">
       <img class="w-full min-w-[180px] max-h-full object-contain" 
-        :src="`/public/${props.image}`"
-        :alt="props.nom"> 
+        :src="image"
+        :alt="nom"> 
     </div>
     <h3 class="mt-10">{{ props.nom }}</h3>
 
     </div>
 
     <div v-if="!cardBestSellers">
-    <h3 class="mt-2">{{ props.nom }}</h3>
-      <p class="text-sm text-gray-500 mb-8">Origin: {{ props.category }}</p>
+    <h3 class="mt-2">{{ nom }}</h3>
+      <p class="text-sm text-gray-500 mb-8">Origin: {{ category }}</p>
           <!-- Conteneur de l'image -->
     <div class="flex justify-center items-center h-[160px] mb-8">
       <img class="w-full min-w-[180px] max-h-full object-contain opacity-100" 
-        :src="`src/images/${props.image}`"
-        :alt="props.nom"> 
+        :src="image"
+        :alt="nom"> 
     </div>
-      <p class="text-lg font-semibold">Prix: {{ props.price }} $</p>
+      <p class="text-lg font-semibold">Prix: {{ price }} $</p>
     </div>
 </div>
   

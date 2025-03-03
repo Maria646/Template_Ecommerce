@@ -1,5 +1,6 @@
 <template>
   <div class="favoris min-h-screen px-8 py-12 bg-gray-50">
+    <Header/>
     <h2 class="text-3xl font-bold text-center mb-6">Mes Favoris</h2>
     
     <!-- Message si aucun favori ajouté -->
@@ -15,7 +16,7 @@
         <!-- Image du produit -->
         <img 
           v-if="annonce.image" 
-          :src="`src/images/${annonce.image}`" 
+          :src="annonce.image" 
           :alt="annonce.nom" 
           class="w-40 h-40 object-cover rounded-lg mb-4"
         />
@@ -62,6 +63,7 @@
 
 <script setup>
 import { useFavoritesStore } from "@/stores/favoris.js";
+import Header from '../layout/Header.vue';
 
 const favoritesStore = useFavoritesStore();
 </script>

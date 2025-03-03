@@ -1,5 +1,6 @@
 <template>
-    <div class="mot-de-passe-oublie">
+    <div class="mot-de-passe-oublie ">
+        <Header/>
         <h2>Réinitialiser le mot de passe</h2>
         <form @submit.prevent="envoyerEmail">
             <div class="form-group">
@@ -14,6 +15,7 @@
 
 <script setup>
 import { ref } from 'vue';
+import Header from '../layout/Header.vue';
 
 const email = ref('');
 
