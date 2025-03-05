@@ -1,7 +1,7 @@
 <template>
   <div class="min-h-screen bg-white px-6 py-8">
     <Header/>
-    <h2 class="text-3xl font-bold text-primary mb-6 text-center">🛒 Mon Panier</h2>
+    <h2 class="text-3xl font-bold text-primary mb-6 text-center mt-20">🛒 Mon Panier</h2>
 
     <!-- Affichage si le panier est vide -->
     <div v-if="panierStore.panier.length === 0" class="text-gray-500 text-center text-lg">

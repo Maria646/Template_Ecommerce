@@ -2,14 +2,15 @@
   <section class="contact min-h-screen flex items-center justify-center p-4 relative">
     <Header/>
     <div class="absolute inset-0 bg-secondary opacity-40"></div>
-    <div class="contact__container grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-5xl">
+
+    <div class="contact__container grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-screen-lg mx-auto px-4">
       <!-- Titre de la section -->
-      <div class="contact__title col-span-1 md:col-span-3 mb-10 text-center">
-        <h1 class="text-[70px] text-primary">Contactez-nous</h1>
+      <div class="contact__title col-span-1 md:col-span-3 text-center mt-[85px]">
+        <h1 class="text-[40px] md:text-[55px] lg:text-[70px] text-primary">Contactez-nous</h1>
       </div>
 
       <!-- Coordonnées -->
-      <div class="contact__coordonnee bg-primary p-6 rounded-lg shadow-md">
+      <div class="contact__coordonnee bg-primary p-6 rounded-lg shadow-md flex flex-col">
         <h3 class="text-xl font-semibold text-white mb-5">Coordonnées</h3>
         <div class="contact__number flex items-center mb-4">
           <i class="fas fa-phone-alt text-white mr-3"></i>
@@ -22,7 +23,7 @@
       </div>
 
       <!-- Lieux -->
-      <div class="contact__emplacement bg-primary p-6 rounded-lg shadow-md">
+      <div class="contact__emplacement bg-primary p-6 rounded-lg shadow-md flex flex-col">
         <h3 class="text-xl font-semibold text-white mb-5">Lieux</h3>
         <ul class="text-white">
           <li>123, Rue de la République</li>
@@ -31,7 +32,7 @@
       </div>
 
       <!-- Horaires -->
-      <div class="contact__horaire bg-primary p-6 rounded-lg shadow-md">
+      <div class="contact__horaire bg-primary p-6 rounded-lg shadow-md flex flex-col">
         <h3 class="text-xl font-semibold text-white mb-5">Horaires</h3>
         <ul class="text-white">
           <li>Lundi: 9h - 18h</li>
@@ -46,6 +47,7 @@
     </div>
   </section>
 </template>
+
 
 <script setup>
 import { ref, onMounted } from 'vue';
