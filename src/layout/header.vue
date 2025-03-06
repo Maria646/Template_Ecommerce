@@ -47,35 +47,38 @@
       </div>
   
       <!-- MENU Mobile -->
-      <nav
-        :class="[
-          'absolute right-0 top-14 w-full bg-white border border-gray-300 shadow-lg transition-all duration-300',
-          isOpen ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'
-        ]"
-      >
-        <ul class="flex flex-col space-y-4 text-center p-5">
-          <li class="navItem relative group inline-flex flex-col items-center">
-            Shop
-            <svg class="h-4 w-4 text-gray-500 group-hover:text-black transform group-hover:rotate-180 transition-transform duration-200" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-            </svg>
-            <ul class="hidden group-hover:block space-y-2 bg-gray-100 rounded p-2 w-full">
-              <li class="hover:bg-gray-200"><router-link :to="{ path: '/shop', query: { category: 'Indian Thea' } }">Thea Indian</router-link></li>
-              <li class="hover:bg-gray-200"><router-link :to="{ path: '/shop', query: { category: 'Chinise Thea' } }">Thea Chinois</router-link></li>
-              <li class="hover:bg-gray-200"><router-link :to="{ path: '/shop', query: { category: 'Viet Thea' } }">Thea Vietnamien</router-link></li>
-            </ul>
-          </li>
-          <li class="navItem"><router-link to="/about">About</router-link></li>
-          <li class="navItem"><router-link to="/contact">Contact us</router-link></li>
-          
-          <!-- Icônes Mobile -->
-          <div class="flex justify-center space-x-6 mt-4">
-            <router-link to="/panier"><i class="iconPanier text-2xl">🛒</i></router-link>
-            <router-link to="/favoris"><i class="iconFavoris text-2xl">❤️</i></router-link>
-            <router-link to="/connexion"><i class="iconConnexion text-2xl">🔑</i></router-link>
-          </div>
-        </ul>
-      </nav>
+<nav
+  :class="[
+    'absolute top-0 right-0 bg-primary border border-gray-300 shadow-lg transition-all duration-500 ease-in-out',
+    isOpen ? 'opacity-100 w-full h-screen' : 'opacity-0 w-0 h-0 pointer-events-none'
+  ]"
+  style="background-color: rgba(0, 0, 0, 0.8);" <!-- Fond opaque -->
+>
+  <ul class="flex flex-col justify-center items-center space-y-10 text-white h-full p-5">
+    <!-- Nom du logo -->
+    <li class="text-5xl font-bold text-center mb-10">
+      <router-link to="/" class="text-white">Ecommerce</router-link>
+    </li>
+
+    <!-- Liens de navigation -->
+    <li class="navItem w-full text-3xl font-semibold text-center leading-snug">
+      <router-link to="/shop" class="hover:text-gray-300">Shop</router-link>
+    </li>
+    <li class="navItem w-full text-3xl font-semibold text-center leading-snug">
+      <router-link to="/about" class="hover:text-gray-300">About</router-link>
+    </li>
+    <li class="navItem w-full text-3xl font-semibold text-center leading-snug">
+      <router-link to="/contact" class="hover:text-gray-300">Contact us</router-link>
+    </li>
+
+    <!-- Icônes Mobile -->
+    <div class="flex justify-center space-x-8 mt-12">
+      <router-link to="/panier" class="text-4xl hover:text-gray-300">🛒</router-link>
+      <router-link to="/favoris" class="text-4xl hover:text-gray-300">❤️</router-link>
+      <router-link to="/connexion" class="text-4xl hover:text-gray-300">🔑</router-link>
+    </div>
+  </ul>
+</nav>
     </header>
   </template>
   

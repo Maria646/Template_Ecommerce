@@ -1,7 +1,7 @@
 <template>
-  <div class="favoris min-h-screen px-8 py-12 bg-gray-50">
+  <div class="favoris min-h-screen px-4 md:px-6 py-8 bg-gray-50">
     <Header/>
-    <h2 class="text-3xl font-bold text-center mb-6">Mes Favoris</h2>
+    <h2 class="text-primary text-3xl font-bold text-center mb-6 mt-20">Mes Favoris</h2>
     
     <!-- Message si aucun favori ajouté -->
     <div v-if="favoritesStore.favorites.length === 0" class="text-gray-500 text-center text-lg">
@@ -69,10 +69,4 @@ const favoritesStore = useFavoritesStore();
 </script>
 
 <style scoped>
-.bg-primary {
-  background-color: #4caf50; /* Exemple de couleur primaire */
-}
-.bg-secondary {
-  background-color: #f9f9f9; /* Exemple de couleur secondaire */
-}
 </style>

@@ -1,12 +1,12 @@
 <template>
-  <div v-if="produit" class="h-screen flex items-center justify-center bg-gradient-to-r from-gray-100 to-gray-200 px-4">
-    <Header/>
-    <div class="bg-secondary shadow-lg rounded-2xl p-6 w-[900px] h-[400px] flex items-center gap-6 animate-fade-in relative">
+  <div v-if="produit" class="min-h-screen flex flex-col items-center justify-center bg-gradient-to-r from-gray-100 to-gray-200 px-4 py-8">
+    <Header />
+    <div class="bg-secondary shadow-lg rounded-2xl p-6 w-full max-w-3xl flex flex-col md:flex-row items-center gap-6 animate-fade-in relative">
       
       <!-- Bouton Favoris en haut à droite -->
       <button 
         @click="pushFavoris(produit)" 
-        class="absolute top-8 right-10 text-gray-600 hover:text-red-500 transition duration-300 text-xl"
+        class="absolute top-4 right-4 text-gray-600 hover:text-red-500 transition duration-300 text-xl"
       >
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 transition-transform duration-150 ease-out active:scale-75">
           <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" />
@@ -18,11 +18,11 @@
         v-if="produit?.image" 
         :src="produit?.image"
         :alt="produit?.nom || 'Image indisponible'" 
-        class="w-60 h-60 object-cover rounded-lg shadow-md"
+        class="w-40 h-40 md:w-60 md:h-60 object-cover rounded-lg shadow-md"
       />
 
       <!-- Contenu à droite -->
-      <div class="flex-1">
+      <div class="flex-1 text-center md:text-left">
         <h2 class="text-2xl font-semibold text-gray-800">{{ produit?.nom || 'Nom du produit' }}</h2>
         <p class="text-gray-600 mt-2">{{ produit?.description || 'Description du produit non disponible.' }}</p>
 

@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-white px-6 py-8">
+  <div class="min-h-screen bg-white px-4 md:px-6 py-8">
     <Header/>
     <h2 class="text-3xl font-bold text-primary mb-6 text-center mt-20">🛒 Mon Panier</h2>
 
@@ -9,46 +9,46 @@
     </div>
 
     <!-- Liste des produits du panier -->
-    <div v-else class="flex flex-col space-y-6 max-w-3xl mx-auto">
+    <div v-else class="flex flex-col space-y-6 max-w-4xl mx-auto">
       <div 
         v-for="annonce in panierStore.panier" 
         :key="annonce.id"
-        class="bg-white shadow-lg rounded-xl p-5 flex items-center space-x-6 transition-transform duration-200 hover:scale-105 hover:shadow-2xl"
+        class="bg-white shadow-lg rounded-xl p-5 flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6 transition-transform duration-200 hover:scale-105 hover:shadow-2xl"
       >
-        <!-- Image du produit (à gauche) -->
+        <!-- Image du produit -->
         <img 
           :src="annonce.image" 
           :alt="annonce.nom" 
-          class="w-40 h-40 object-cover rounded-lg shadow-md"
+          class="w-32 h-32 md:w-40 md:h-40 object-cover rounded-lg"
         />
 
-        <!-- Infos du produit (à droite) -->
-        <div class="flex-1">
+        <!-- Infos du produit -->
+        <div class="flex-1 text-center md:text-left">
           <p class="text-xl font-semibold text-gray-800">{{ annonce.nom }}</p>
           <p class="text-gray-600 text-sm mt-1">{{ annonce.description }}</p>
           <p class="text-lg font-bold text-primary mt-2">{{ annonce.price }} €</p>
 
           <!-- Boutons -->
-          <div class="flex space-x-4 mt-4">
+          <div class="flex flex-wrap justify-center md:justify-start gap-4 mt-4">
             <RouterLink 
               :to="`/paiement/${annonce.id}`" 
-              class="bg-primary text-white px-4 py-2 rounded-lg shadow-md text-center font-medium transition duration-300 hover:bg-secondary hover:border border-primary hover:text-primary"
+              class="bg-primary text-white px-4 py-2 rounded-lg shadow-md font-medium transition duration-300 hover:bg-secondary hover:border border-primary hover:text-primary"
             >
-               Acheter
+              Acheter
             </RouterLink>
             
             <RouterLink 
               :to="`/ficheDetailProduit/${annonce.id}`"
-              class="bg-gray-200 text-gray-800 px-4 py-2 rounded-lg text-center font-medium transition duration-300 hover:bg-gray-300"
+              class="bg-gray-200 text-gray-800 px-4 py-2 rounded-lg font-medium transition duration-300 hover:bg-gray-300"
             >
-               Détails
+              Détails
             </RouterLink>
 
             <button 
               @click="panierStore.removePanier(annonce.id)" 
               class="bg-red-500 text-white px-4 py-2 rounded-lg shadow-md font-medium transition duration-300 hover:bg-red-600"
             >
-               Retirer
+              Retirer
             </button>
           </div>
         </div>
@@ -56,17 +56,18 @@
     </div>
 
     <!-- Affichage du prix total -->
-    <div v-if="panierStore.panier.length > 0" class="flex justify-between items-center mt-8 bg-white p-4 shadow-lg rounded-lg">
+    <div v-if="panierStore.panier.length > 0" class="flex flex-col md:flex-row justify-between items-center mt-8 bg-white p-4 shadow-lg rounded-lg max-w-4xl mx-auto">
       <p class="text-xl font-semibold text-gray-800">Total: {{ totalPrix }} €</p>
       <button 
-      @click="redirectToCheckout"
-        class="bg-green-500 text-white px-6 py-2 rounded-lg text-center font-medium transition duration-300 hover:bg-green-600"
+        @click="redirectToCheckout"
+        class="bg-primary text-white px-6 py-2 rounded-lg text-center font-medium transition duration-300 hover:bg-secondary hover:text-primary mt-4 md:mt-0"
       >
         Aller au Paiement
       </button>
     </div>
   </div>
 </template>
+
 
 
 <script setup>
