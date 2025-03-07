@@ -3,7 +3,6 @@
     <Header />
     <div class="bg-secondary shadow-lg rounded-2xl p-6 w-full max-w-3xl flex flex-col md:flex-row items-center gap-6 animate-fade-in relative">
       
-      <!-- Bouton Favoris en haut à droite -->
       <button 
         @click="pushFavoris(produit)" 
         class="absolute top-4 right-4 text-gray-600 hover:text-red-500 transition duration-300 text-xl"
@@ -13,15 +12,13 @@
         </svg>
       </button>
 
-      <!-- Image à gauche -->
       <img 
         v-if="produit?.image" 
-        :src="produit?.image"
+        :src="`/${produit.image}`"
         :alt="produit?.nom || 'Image indisponible'" 
         class="w-40 h-40 md:w-60 md:h-60 object-cover rounded-lg shadow-md"
       />
 
-      <!-- Contenu à droite -->
       <div class="flex-1 text-center md:text-left">
         <h2 class="text-2xl font-semibold text-gray-800">{{ produit?.nom || 'Nom du produit' }}</h2>
         <p class="text-gray-600 mt-2">{{ produit?.description || 'Description du produit non disponible.' }}</p>
@@ -49,7 +46,6 @@
     </div>
   </div>
 
-  <!-- Affichage d'un message de chargement en attendant les données -->
   <div v-else class="h-screen flex items-center justify-center text-gray-500 text-lg">
     Chargement du produit...
   </div>

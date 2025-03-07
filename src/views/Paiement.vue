@@ -19,8 +19,7 @@
                         min="1" 
                         step="1" 
                         v-model.number="ajoutArticle" 
-                        class="w-16 p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
-                    />
+                        class="w-16 p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"/>
                 </div>
   
                 <div class="flex justify-between items-center">

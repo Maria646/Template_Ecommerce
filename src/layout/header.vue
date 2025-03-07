@@ -1,15 +1,13 @@
 <template>
-<header class="bg-secondary text-primary opacity-60 fixed top-0 left-0 w-full z-50 backdrop-blur-xl">
+<header class="bg-secondary text-primary opacity-60 fixed top-0 left-0 w-full z-50 backdrop-blur-lg">
 
       <div class="absolute inset-0 bg-secondary "></div>
 
       <div class="relative z-10 grid grid-cols-3 text-center p-5 items-center">
-        <!-- LOGO -->
         <div class="logo col-span-1">
           <router-link to="/">Ecommerce</router-link>
         </div>
   
-        <!-- MENU Desktop -->
         <nav class="navbar col-span-1 hidden md:block">
           <ul class="navList flex justify-center space-x-5">
             <li class="navItem relative group inline-flex items-center">
@@ -20,7 +18,6 @@
           </ul>
         </nav>
   
-        <!-- ICÔNES Desktop -->
         <div class="iconDivers col-span-1 hidden md:flex space-x-6 justify-end">
 
           <router-link to="/panier">
@@ -40,19 +37,18 @@
           </router-link>
         </div>
   
-        <!-- Bouton Hamburger (Mobile) -->
         <button @click="toggleMenu" class="md:hidden block text-3xl absolute right-5 top-3 focus:outline-none">
           <span>{{ isOpen ? "✖" : "☰" }}</span>
         </button>
       </div>
   
-      <!-- MENU Mobile -->
+      
 <nav
   :class="[
     'absolute top-0 right-0 bg-primary border border-gray-300 shadow-lg transition-all duration-500 ease-in-out',
     isOpen ? 'opacity-100 w-full h-screen' : 'opacity-0 w-0 h-0 pointer-events-none'
   ]"
-  style="background-color: rgba(0, 0, 0, 0.8);" <!-- Fond opaque -->
+  style="background-color: rgba(0, 0, 0, 0.8);" 
 >
   <ul class="flex flex-col justify-center items-center space-y-10 text-white h-full p-5">
     <!-- Nom du logo -->

@@ -1,19 +1,16 @@
 <template>
   <div class="favoris min-h-screen px-4 md:px-6 py-8 bg-gray-50">
-    <Header/>
+    <Header />
     <h2 class="text-primary text-3xl font-bold text-center mb-6 mt-20">Mes Favoris</h2>
-    
-    <!-- Message si aucun favori ajouté -->
+
     <div v-if="favoritesStore.favorites.length === 0" class="text-gray-500 text-center text-lg">
       Aucun favori ajouté.
     </div>
 
-    <!-- Liste des favoris -->
     <div v-else class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
       <div v-for="annonce in favoritesStore.favorites" :key="annonce.id" 
         class="bg-white shadow-lg rounded-3xl p-6 flex flex-col items-center justify-between transition-all duration-300 hover:scale-105 hover:shadow-xl">
 
-        <!-- Image du produit -->
         <img 
           v-if="annonce.image" 
           :src="annonce.image" 
@@ -21,7 +18,6 @@
           class="w-40 h-40 object-cover rounded-lg mb-4"
         />
 
-        <!-- Contenu du produit -->
         <div class="text-center">
           <h2 class="text-xl font-semibold text-gray-800 mb-2">{{ annonce.nom || 'Nom du produit' }}</h2>
           <p class="text-gray-600 text-sm mb-4">{{ annonce.description || 'Description du produit non disponible.' }}</p>
@@ -38,7 +34,6 @@
             <p v-else class="text-gray-500">Aucune information nutritionnelle disponible.</p>
           </div>
 
-          <!-- Boutons -->
           <div class="mt-6 space-x-4">
             <router-link
               v-if="annonce" 

@@ -3,32 +3,27 @@
     <Header/>
     <h2 class="text-3xl font-bold text-primary mb-6 text-center mt-20">🛒 Mon Panier</h2>
 
-    <!-- Affichage si le panier est vide -->
     <div v-if="panierStore.panier.length === 0" class="text-gray-500 text-center text-lg">
       Votre panier est vide.
     </div>
 
-    <!-- Liste des produits du panier -->
     <div v-else class="flex flex-col space-y-6 max-w-4xl mx-auto">
       <div 
         v-for="annonce in panierStore.panier" 
         :key="annonce.id"
         class="bg-white shadow-lg rounded-xl p-5 flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6 transition-transform duration-200 hover:scale-105 hover:shadow-2xl"
       >
-        <!-- Image du produit -->
         <img 
           :src="annonce.image" 
           :alt="annonce.nom" 
           class="w-32 h-32 md:w-40 md:h-40 object-cover rounded-lg"
         />
 
-        <!-- Infos du produit -->
         <div class="flex-1 text-center md:text-left">
           <p class="text-xl font-semibold text-gray-800">{{ annonce.nom }}</p>
           <p class="text-gray-600 text-sm mt-1">{{ annonce.description }}</p>
           <p class="text-lg font-bold text-primary mt-2">{{ annonce.price }} €</p>
 
-          <!-- Boutons -->
           <div class="flex flex-wrap justify-center md:justify-start gap-4 mt-4">
             <RouterLink 
               :to="`/paiement/${annonce.id}`" 
@@ -55,7 +50,6 @@
       </div>
     </div>
 
-    <!-- Affichage du prix total -->
     <div v-if="panierStore.panier.length > 0" class="flex flex-col md:flex-row justify-between items-center mt-8 bg-white p-4 shadow-lg rounded-lg max-w-4xl mx-auto">
       <p class="text-xl font-semibold text-gray-800">Total: {{ totalPrix }} €</p>
       <button 

@@ -40,7 +40,7 @@
           <!-- Conteneur de l'image -->
     <div class="flex justify-center items-center h-[160px] mb-8">
       <img class="w-full min-w-[180px] max-h-full object-contain opacity-100" 
-        :src="image"
+        :src="`/${image}`"
         :alt="nom"> 
     </div>
       <p class="text-lg font-semibold">Prix: {{ price }} $</p>

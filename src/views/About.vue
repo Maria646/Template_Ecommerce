@@ -96,10 +96,4 @@ const cardsOrigin = reactive([
 
 
 <style scoped>
-    /* h2{
-    font-size: 70px;
-    text-transform: uppercase;
-    color:#32312f;
-    margin-bottom: 40px;
-  } */
 </style>
