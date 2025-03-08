@@ -5,33 +5,43 @@
 >
   <Header />
 
-  <div class="flex flex-col md:grid md:grid-cols-2 h-full relative">
+  <div class="h-full flex flex-col justify-center md:grid md:grid-cols-2 ">
     <!-- Section "About" -->
-    <div class="banner__about col-start-1 col-end-2 max-w-[400px] w-full mx-auto sm:mt-8 md:ml-[250px] p-6 rounded-xl shadow-xl bg-opacity-80 backdrop-blur-lg transform transition-all duration-300 hover:scale-105 sm:opacity-90 md:opacity-100 flex flex-col sm:justify-end">
+    <div class="banner__about col-span-1 sm:col-start-1 sm:col-end-2 
+    sm:mt-[220px] xl:mt-[220px] sm:ml-[250px] max-w-[300px] h-[200px] mx-auto p-6 
+    bg-opacity-20 backdrop-blur-md shadow-lg rounded
+    md:bg-opacity-0 md:backdrop-blur-none md:shadow-none md:rounded-none">
+
       <div>
-        <h2 class="text-xl sm:text-2xl md:text-2xl lg:text-3xl font-medium text-primary">About</h2>
+        <h2 class="text-4xl sm:text-4xl md:text-4xl lg:text-5xl xl:text-6xl text-primary uppercase font-medium">About</h2>
         <p class="text-primary text-sm sm:text-base md:text-base lg:text-lg leading-relaxed mt-4">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
           Sed posuere, dui at consectetur fermentum, nunc urna ullamcorper neque,
           vel hendrerit mauris felis non velit.
         </p>
       </div>
+      ....
     </div>
 
     <!-- Texte "FEEL MORE THAN CAN" -->
-    <div class="banner__text col-start-2 mt-10 px-6 md:px-12 z-10 sm:mt-8 sm:ml-12 md:ml-[150px] lg:ml-[150px] xl:ml-[150px] sm:absolute sm:bottom-0 sm:left-0 sm:right-0 sm:text-center md:static md:text-left">
-      <h2 class="flex flex-col text-3xl sm:text-4xl md:text-4xl lg:text-5xl xl:text-6xl text-primary sm:p-2 sm:rounded-md sm:shadow-xl  md:bg-none lg:bg-none xl:bg-none">
-        <span class="self-start mb-5 text-gradient">FEEL <span class="font-bold">MORE</span></span>
-        <span class="self-end text-gradient">THAN CAN...</span>
-      </h2>
-    </div>
+    <div class="banner__text col-span-1  md:col-start-2 md:col-end-2  mt-[120px] px-6 md:px-12 z-10 sm:mt-20 sm:mr-[200px] md:ml-[60px] lg:ml-[150px] xl:ml-[150px] ">
+  <h2 class="flex flex-col text-4xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-6xl text-primary sm:p-2  md:bg-none lg:bg-none xl:bg-none">
+    <span class="mb-5 text-primary pr-[150px] sm:pr-12 md:pr-16 lg:pr-20 whitespace-nowrap">
+      FEEL <span class="font-bold">MORE</span>
+    </span>
+    <span class="text-gradient pl-[10px] sm:pl-20 md:pl-16 lg:pl-20 whitespace-nowrap">
+      THAN CAN...
+    </span>
+  </h2>
+</div>
+
   </div>
 </section>
 
 
 
 
-  <section class="bestSelers p-20 bg-cover bg-center bg-no-repeat relative" :style="{ backgroundImage: `url(${photo})` }">
+  <section class="bestSelers p-20 bg-cover bg-center bg-no-repeat relative text-primary" :style="{ backgroundImage: `url(${photo})` }">
     <div class="absolute inset-0 bg-secondary opacity-40"></div>
     <div class="bestSelers max-w-[1000px] mx-auto text-center relative z-10">
       <div class="bestSelers__title mb-20">
@@ -63,8 +73,8 @@
       <img src="/public/images/photo.png" alt="Ceremony" class="w-full object-cover"/>
     </div>
 
-    <div class="ceremony__text bg-clair p-12 md:p-20 text-center md:text-left bg-cover bg-center bg-no-repeat relative" :style="{ backgroundImage: `url(${photo})` }">
-      <div class="absolute inset-0 bg-secondary opacity-60 z-0"></div>
+    <div class="ceremony__text text-primary bg-clair p-12 md:p-20 text-center md:text-left bg-cover bg-center bg-no-repeat relative" :style="{ backgroundImage: `url(${photo})` }">
+      <div class="absolute inset-0 bg-secondary opacity-80 z-0"></div>
       <div class="relative z-10">
         <h2 class="text-5xl mb-10 uppercase">Ceremony</h2>
         <p class="text-gray-600">
@@ -83,7 +93,7 @@
   <script setup>
   import Header from '../layout/Header.vue'; 
   import banner from "/public/images/banner1.png"; 
-  // import photo from "/public/images/photo1.png";
+  import photo from "/public/images/photo.png";
   import { ref, onMounted } from 'vue';
   import Card from '@/components/Card.vue';
   import { useProduits } from '@/composables/donneesAPI';

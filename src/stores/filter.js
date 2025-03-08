@@ -21,6 +21,7 @@ export const useFiltersStore = defineStore('filters', {
     },
 
     updatePrix(prix) {
+      // Assurez-vous de comparer les prix en nombre flottant
       const prixDecimal = parseFloat(prix);
       if (this.selectedPrices.includes(prixDecimal)) {
         this.selectedPrices = this.selectedPrices.filter(item => item !== prixDecimal);

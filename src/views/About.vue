@@ -1,74 +1,87 @@
 <template>
-<!-- Section Bannière -->
-<section class="banner p-10 md:p-20 bg-primary text-white bg-cover bg-center bg-no-repeat relative">
-  <Header/>
-  
-  <div class="absolute inset-0 bg-primary bg-opacity-50"></div> <!-- Overlay sombre -->
-  
-  <div class="banner__container max-w-screen-md mx-auto text-center relative z-10 px-4">
-    <h1 class="text-[40px] md:text-[70px] mt-10">About</h1>
-    <p class="mt-4 text-base md:text-lg leading-relaxed max-w-[90%] mx-auto">
-      This is a simple Vue.js component that displays a welcome message.
-    </p>
-  </div>
-</section>
+  <div class="relative bg-cover bg-center bg-no-repeat" :style="{ backgroundImage: `url(${photo})` }">
+    <div class="absolute inset-0 bg-secondary opacity-40"></div>
 
-
-<!-- Section Histoire -->
-<section class="history py-20 relative">
-  <div class="absolute inset-0 bg-secondary opacity-40"></div>
-  <div class="history__container grid grid-cols-1 md:grid-cols-2 gap-10 max-w-screen-md mx-auto px-4">
-
-    <!-- Texte -->
-    <div class="history__text md:max-w-[600px]">
-      <h2 class=" text-[40px] uppercase text-primary ">History</h2>
-      <p class="mt-4 text-sm md:text-lg text-gray-600 leading-relaxed">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vel faucibus libero, ac tincidunt lorem. Nulla facilisi.
-        Sed vitae neque euismod, consectetur metus ut, pulvinar diam. Donec vel turpis vel nunc elementum fermentum.
-      </p>
-    </div>
-        <!-- Image en premier sur mobile -->
-    <div class="history__image min-h-[350px] w-full bg-gray-100 rounded-xl bg-cover bg-center bg-no-repeat relative md:order-none"
-      style="background-image: url('https://media.istockphoto.com/id/1479931930/photo/fresh-tea-leaves-background.jpg?s=612x612&w=0&k=20&c=-RnIbmx3e8_nluYF2JzxEuu2B24yHRZv-L8pHto7dO4=');">
-      <div class="absolute inset-0 bg-primary bg-opacity-40 rounded-xl"></div> <!-- Overlay coloré -->
-    </div>
-  </div>
-</section>
-
-
-<!-- Section Origine -->
-<section class="origin py-10 relative">
-  <div class="absolute inset-0 bg-secondary opacity-40"></div>
-  <h2 class="text-center text-[40px] uppercase text-primary md:text-[55px] lg:text-[70px] mb-[40px] md:p-20">
-    Origin
-  </h2>
-  
-  <div class="origin__container grid grid-cols-1 md:grid-cols-2 gap-10 max-w-screen-xl mx-auto px-4">
-    <div v-for="(card, index) in cardsOrigin" :key="index" 
-      class="origin__card grid grid-cols-1 md:grid-cols-[3fr_2fr] rounded-lg shadow-md overflow-hidden relative">
-      
-      <!-- Image -->
-      <div class="origin__image bg-cover bg-center bg-no-repeat h-48 md:h-64 relative"
-        :style="{ backgroundImage: `url(${card.image})` }">
-        <div class="absolute inset-0 bg-primary bg-opacity-50"></div> <!-- Overlay léger -->
+    <!-- Section Bannière -->
+    <section class="mb-20 md:p-20 relative h-[500px]">
+      <Header />
+      <div class="absolute inset-0 bg-secondary opacity-50"></div>
+      <div class="max-w-screen-md mx-auto text-center relative z-10 px-4 text-primary">
+        <h1 class="text-6xl md:text-6xl mt-20 uppercase mb-10">About</h1>
+        <p class="mt-4 text-base md:text-lg leading-relaxed max-w-[90%] mx-auto">
+         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore eaque corporis porro deleniti corrupti beatae praesentium possimus ea, harum sequi expedita, obcaecati culpa nihil doloribus! Fuga inventore magnam quos exercitationem.
+        </p>
       </div>
-      
-      <!-- Texte -->
-      <div class="origin__text p-5 flex flex-col justify-center bg-secondary bg-opacity-80 shadow-xl">
-        <h3 class="text-[20px] text-gray-600 drop-shadow-md uppercase md:text-[40px]">{{ card.title }}</h3>
-        <p class="mt-2 text-sm md:text-base text-gray-600 drop-shadow-md">{{ card.text }}</p>
+          <!-- Ligne de séparation moderne -->
+    <div class="flex items-center justify-center gap-4 my-10">
+      <div class="h-[2px] w-1/4 bg-gradient-to-r from-transparent via-gray-500 to-transparent"></div>
+      <div class="bg-gray-200 p-2 rounded-full shadow-md">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-primary">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v18m-6-6 6 6 6-6" />
+        </svg>
       </div>
-      
+      <div class="h-[2px] w-1/4 bg-gradient-to-r from-transparent via-gray-500 to-transparent"></div>
     </div>
+    </section>
+
+    <!-- Section Histoire -->
+    <section class="py-20">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-screen-lg mx-auto px-4 rounded-lg">
+        <!-- Texte -->
+        <div class="md:max-w-[600px] z-10">
+          <h2 class="text-6xl uppercase text-primary mb-10">History</h2>
+          <p class="mt-4 text-sm md:text-lg text-primary leading-relaxed">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur asperiores corrupti reprehenderit illo perferendis quod quos nulla commodi ratione porro voluptas, optio sit consequatur hic, sed inventore numquam! Qui, iure!
+          </p>
+        </div>
+        <!-- Image -->
+        <div class="min-h-[350px] w-full bg-gray-100 rounded-xl bg-cover bg-center bg-no-repeat relative"
+          style="background-image: url('https://media.istockphoto.com/id/1479931930/photo/fresh-tea-leaves-background.jpg?s=612x612&w=0&k=20&c=-RnIbmx3e8_nluYF2JzxEuu2B24yHRZv-L8pHto7dO4=');">
+          <div class="absolute inset-0 bg-primary bg-opacity-40 rounded-xl"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Ligne de séparation moderne -->
+    <div class="flex items-center justify-center gap-4 my-10">
+      <div class="h-[2px] w-1/4 bg-gradient-to-r from-transparent via-gray-500 to-transparent"></div>
+      <div class="bg-gray-200 p-2 rounded-full shadow-md">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-primary">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v18m-6-6 6 6 6-6" />
+        </svg>
+      </div>
+      <div class="h-[2px] w-1/4 bg-gradient-to-r from-transparent via-gray-500 to-transparent"></div>
+    </div>
+
+    <!-- Section Origine -->
+    <section class="py-10 text-primary">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-screen-xl mx-auto px-4">
+        <div v-for="(card, index) in cardsOrigin" :key="index"
+          class="grid grid-cols-1 md:grid-cols-[3fr_2fr] rounded-lg shadow-md overflow-hidden relative">
+          
+          <!-- Image -->
+          <div class="bg-cover bg-center bg-no-repeat h-48 md:h-64 relative"
+            :style="{ backgroundImage: `url(${card.image})` }">
+            <div class="absolute inset-0 bg-primary bg-opacity-50"></div>
+          </div>
+          
+          <!-- Texte -->
+          <div class="p-5 flex flex-col justify-center bg-opacity-30 shadow-xl bg-secondary">
+            <h3 class="text-lg md:text-2xl drop-shadow-md uppercase">{{ card.title }}</h3>
+            <p class="mt-2 text-sm md:text-base drop-shadow-md">{{ card.text }}</p>
+          </div>
+          
+        </div>
+      </div>
+    </section>
   </div>
-</section>
-
-
 </template>
+
 
 <script setup>
 import { reactive } from 'vue';
 import Header from '../layout/Header.vue'; 
+import photo from "/public/images/photo.png";
 
 const cardsOrigin = reactive([
   { 

@@ -34,7 +34,7 @@
 
     </div>
 
-    <div v-if="!cardBestSellers">
+    <div v-if="!cardBestSellers" class="text-primary">
     <h3 class="mt-2">{{ nom }}</h3>
       <p class="text-sm text-gray-500 mb-8">Origin: {{ category }}</p>
           <!-- Conteneur de l'image -->
