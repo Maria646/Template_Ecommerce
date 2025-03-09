@@ -58,7 +58,7 @@
 
 <script setup>
 import { useFavoritesStore } from "@/stores/favoris.js";
-import Header from '../layout/Header.vue';
+import Header from '@/layout/Header.vue';
 
 const favoritesStore = useFavoritesStore();
 </script>

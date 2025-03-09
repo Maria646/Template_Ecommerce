@@ -65,12 +65,12 @@
 
 
 <script setup>
-import { computed, ref } from 'vue';  // Correct pour computed
-import { RouterLink } from 'vue-router';  // Correct pour RouterLink
+import { computed, ref } from 'vue';  
+import { RouterLink } from 'vue-router';  
 import { usePanierStore } from "@/stores/panier.js";
 import usePayment from '@/composables/paiementAPI.js';
 import { loadStripe } from '@stripe/stripe-js';
-import Header from '../layout/Header.vue';
+import Header from '@/layout/Header.vue';
 
 const { createCheckoutSession } = usePayment();
 

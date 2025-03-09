@@ -61,7 +61,7 @@
 <script setup>
 import { reactive, computed } from 'vue';
 import { useRouter } from 'vue-router';
-import Header from '../layout/Header.vue';
+import Header from '@/layout/Header.vue';
 
 const form = reactive({
     email: '',

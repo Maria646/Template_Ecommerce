@@ -47,7 +47,7 @@ import { useRoute } from 'vue-router';
 import { useProduits } from '@/composables/donneesAPI';
 import usePayment from '@/composables/paiementAPI.js';
 import { loadStripe } from '@stripe/stripe-js';
-import Header from '../layout/Header.vue';
+import Header from '@/layout/Header.vue';
 
 const { getProduitById } = useProduits();
 const { createCheckoutSession } = usePayment(); 

@@ -15,7 +15,7 @@
 
 <script setup>
 import { ref } from 'vue';
-import Header from '../layout/Header.vue';
+import Header from '@/layout/Header.vue';
 
 const email = ref('');
 

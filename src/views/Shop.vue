@@ -85,12 +85,12 @@
 import { ref, onMounted, computed } from 'vue';
 import { RouterLink } from 'vue-router';
 import Card from '@/components/Card.vue';
-import Filters from "../components/Filters.vue";
+import Filters from "@/components/Filters.vue";
 import { useProduits } from '@/composables/donneesAPI';
 import { useFiltersStore } from '@/stores/filter';
 import { useFavoritesStore } from "@/stores/favoris";
 import { usePanierStore } from '@/stores/panier';
-import Header from '../layout/Header.vue';
+import Header from '@/layout/Header.vue';
 import photo from "/public/images/photo.png";
 
 // Variables pour stocker les annonces et l'état de chargement

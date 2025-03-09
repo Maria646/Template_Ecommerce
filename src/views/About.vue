@@ -80,7 +80,7 @@
 
 <script setup>
 import { reactive } from 'vue';
-import Header from '../layout/Header.vue'; 
+import Header from '@/layout/Header.vue'; 
 import photo from "/public/images/photo.png";
 
 const cardsOrigin = reactive([
