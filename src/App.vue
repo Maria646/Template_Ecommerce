@@ -1,6 +1,6 @@
 <script setup>
 import { RouterView } from 'vue-router';
-import Default from '@/layout/Default.vue';
+import Default from '@/layout/default.vue';
 
 </script>
 

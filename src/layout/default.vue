@@ -6,7 +6,7 @@
 </template>
 
 <script setup>
-import Footer from './Footer.vue'; // Correction ici
+import Footer from '@/Footer.vue'; // Correction ici
 </script>
 
 
