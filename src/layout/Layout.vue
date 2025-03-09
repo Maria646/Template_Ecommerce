@@ -2,11 +2,11 @@
     <main>
         <RouterView />
     </main>
-    <Footer/>
+    <footer/>
 </template>
 
 <script setup>
-import Footer from '@/layout/Footer.vue'
+import footer from '@/layout/footer.vue'
 </script>
 
 

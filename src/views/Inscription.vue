@@ -1,6 +1,6 @@
 <template>
     <section class="inscription h-screen flex items-center justify-center">
-      <Header/>
+      <header/>
       <div class="inscription__container w-full max-w-3xl mx-auto min-h-[400px] p-6 rounded-lg bg-white shadow-md">
         <h2 class="inscription__title text-xl font-semibold text-center mb-4">Inscription</h2>
         <form class="inscription__form">
@@ -61,7 +61,7 @@
 <script setup>
 import { reactive, computed } from 'vue';
 import { useRouter } from 'vue-router';
-import Header from '@/layout/Header.vue';
+import header from '@/layout/header.vue';
 
 const form = reactive({
     email: '',

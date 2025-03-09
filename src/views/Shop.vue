@@ -90,7 +90,7 @@ import { useProduits } from '@/composables/donneesAPI';
 import { useFiltersStore } from '@/stores/filter';
 import { useFavoritesStore } from "@/stores/favoris";
 import { usePanierStore } from '@/stores/panier';
-import Header from '@/layout/Header.vue';
+import Header from '@/layout/header.vue';
 import photo from "/public/images/photo.png";
 
 // Variables pour stocker les annonces et l'état de chargement

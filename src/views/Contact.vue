@@ -65,7 +65,7 @@
 
 <script setup>
 import { ref, onMounted } from 'vue';
-import Header from '@/layout/Header.vue'; 
+import Header from '@/layout/header.vue'; 
 import photo from "/public/images/photo.png";
 </script>
 

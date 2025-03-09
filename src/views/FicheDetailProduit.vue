@@ -57,7 +57,7 @@ import { useRoute } from 'vue-router';
 import { useProduits } from '@/composables/donneesAPI';
 import { useFavoritesStore } from "@/stores/favoris";
 import { usePanierStore } from "@/stores/panier";
-import Header from '@/layout/Header.vue';
+import Header from '@/layout/header.vue';
 
 // **1. Déclaration des stores**
 const favoritesStore = useFavoritesStore();

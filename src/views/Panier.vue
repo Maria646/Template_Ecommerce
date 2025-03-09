@@ -70,7 +70,7 @@ import { RouterLink } from 'vue-router';
 import { usePanierStore } from "@/stores/panier.js";
 import usePayment from '@/composables/paiementAPI.js';
 import { loadStripe } from '@stripe/stripe-js';
-import Header from '@/layout/Header.vue';
+import Header from '@/layout/header.vue';
 
 const { createCheckoutSession } = usePayment();
 

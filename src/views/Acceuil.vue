@@ -91,7 +91,7 @@
 
   
   <script setup>
-  import Header from '@/layout/Header.vue'; 
+  import Header from '@/layout/header.vue'; 
   import banner from "/public/images/banner1.png"; 
   import photo from "/public/images/photo.png";
   import { ref, onMounted } from 'vue';

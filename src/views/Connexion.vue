@@ -48,7 +48,7 @@
 
 <script setup>
 import { ref, reactive } from 'vue';
-import Header from '@/layout/Header.vue'; 
+import Header from '@/layout/header.vue'; 
 import photo from "/public/images/photo.png";
 
 import { useRouter } from 'vue-router';
