@@ -2,7 +2,7 @@ import axios from 'axios';
 import { ref } from 'vue';
 
 // Définition de l'URL de base de l'API
-const apiUrl = 'http://localhost:6699';
+const apiUrl = ' https://frontend-projet-ecommerce-55f810fe8476.herokuapp.com';
 
 export function useProduits() {
   const error = ref(null);
@@ -11,6 +11,7 @@ export function useProduits() {
   const getAllProduits = async () => {
     try {
       const response = await axios.get(`${apiUrl}/produits`);
+      console.log('Données reçues:', response.data);
       return response.data;
     } catch (err) {
       error.value = "Impossible de récupérer les Articles.";
